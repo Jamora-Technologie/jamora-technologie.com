@@ -18,9 +18,38 @@ export function useCountUp(target: number, duration = 1800) {
   useEffect(() => {
     if (!inView) return;
 
-    // TODO(human): animer `value` de 0 vers `target` sur `duration` ms.
-    // Aujourd'hui la valeur saute directement à sa cible en une frame.
-    const frame = requestAnimationFrame(() => setValue(target));
+    // Un compteur qui défile est du mouvement décoratif : on l'escamote
+    // pour les personnes qui demandent à réduire les animations.
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reduceMotion) {
+      const immediate = requestAnimationFrame(() => setValue(target));
+      return () => cancelAnimationFrame(immediate);
+    }
+
+    let frame = 0;
+    let startedAt: number | null = null;
+
+    const tick = (now: number) => {
+      startedAt ??= now;
+      const progress = Math.min((now - startedAt) / duration, 1);
+
+      // easeOutQuart : départ franc puis arrivée amortie, ce qui donne
+      // au chiffre l'impression de se « poser » sur sa valeur finale.
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setValue(Math.round(target * eased));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        // L'interpolation peut s'arrêter à 1999 : on fixe la valeur exacte.
+        setValue(target);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(frame);
   }, [inView, target, duration]);
