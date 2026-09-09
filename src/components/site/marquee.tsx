@@ -38,10 +38,10 @@ export function WordsBand() {
     <>
       {marqueeWords.map((word) => (
         <span key={word} className="flex items-center">
-          <span className="px-6 font-heading text-4xl font-extrabold tracking-tight sm:px-10 sm:text-6xl lg:text-7xl">
+          <span className="px-7 font-heading text-5xl font-extrabold tracking-tight sm:px-12 sm:text-7xl lg:text-8xl">
             {word}
           </span>
-          <Sparkle className="h-5 w-5 shrink-0 text-brand sm:h-7 sm:w-7" />
+          <Sparkle className="h-6 w-6 shrink-0 text-brand sm:h-9 sm:w-9" />
         </span>
       ))}
     </>
@@ -50,7 +50,7 @@ export function WordsBand() {
   return (
     <section className="py-16 sm:py-20">
       <Track duration="34s">{sequence}</Track>
-      <div className="mx-auto mt-10 flex max-w-6xl items-center gap-4 px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto mt-12 flex max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-10">
         <span className="h-px flex-1 bg-white/15" />
         <Diamond className="h-3 w-3 text-white/50" />
         <span className="h-px flex-1 bg-white/15" />
@@ -65,17 +65,17 @@ export function TagsBand() {
     <>
       {tagWords.map((word) => (
         <span key={word} className="flex items-center">
-          <span className="px-5 font-heading text-lg font-semibold text-white/85 sm:px-8 sm:text-2xl">
+          <span className="px-6 font-heading text-xl font-semibold text-white/85 sm:px-10 sm:text-3xl">
             {word}
           </span>
-          <Sparkle className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4" />
+          <Sparkle className="h-4 w-4 shrink-0 text-brand sm:h-5 sm:w-5" />
         </span>
       ))}
     </>
   );
 
   return (
-    <section className="border-y border-white/10 bg-white/[0.02] py-6">
+    <section className="border-y border-white/10 bg-white/[0.02] py-8">
       <Track duration="28s">{sequence}</Track>
     </section>
   );

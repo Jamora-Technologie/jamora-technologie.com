@@ -8,13 +8,13 @@ import { Reveal, easeOutExpo } from "@/components/motion/reveal";
 
 export function Team() {
   return (
-    <section id="equipe" className="px-4 pb-24 sm:px-6 lg:px-10">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-5 py-14 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-10 sm:py-16">
+    <section id="equipe" className="scroll-mt-32 px-4 pb-28 sm:px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-16 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-20">
         <div className="glow-brand pointer-events-none absolute inset-0" />
 
         <div className="relative flex flex-wrap items-center justify-between gap-4">
           <Reveal>
-            <h2 className="font-heading text-3xl font-semibold sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="font-heading text-4xl font-semibold sm:text-5xl lg:text-[3.25rem]">
               {team.title[0]}{" "}
               <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
                 {team.title[1]}
@@ -24,11 +24,11 @@ export function Team() {
           <Reveal delay={0.1}>
             <a
               href="#contact"
-              className="group flex items-center gap-2 rounded-full border border-white/15 py-1.5 pl-5 pr-1.5 text-xs font-semibold uppercase tracking-wide text-white/80 transition-colors hover:border-brand hover:text-brand"
+              className="group flex items-center gap-2 rounded-full border border-white/15 py-2 pl-6 pr-2 text-sm font-semibold uppercase tracking-wide text-white/80 transition-colors hover:border-brand hover:text-brand"
             >
               {team.pill}
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-brand-foreground transition-transform group-hover:scale-110">
-                <ArrowUpRight className="h-3.5 w-3.5" />
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand text-brand-foreground transition-transform group-hover:scale-110">
+                <ArrowUpRight className="h-4 w-4" />
               </span>
             </a>
           </Reveal>
@@ -47,26 +47,26 @@ export function Team() {
                 delay: (index % 3) * 0.08,
               }}
               whileHover={{ y: -6 }}
-              className="rounded-2xl bg-white p-4 text-ink"
+              className="rounded-3xl bg-white p-6 text-ink"
             >
               <div className="flex items-center gap-3">
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-brand">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-brand">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    sizes="48px"
+                    sizes="56px"
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <p className="font-heading text-sm font-semibold">
+                  <p className="font-heading text-base font-semibold">
                     {member.name}
                   </p>
-                  <p className="text-xs text-neutral-500">{member.role}</p>
+                  <p className="text-sm text-neutral-500">{member.role}</p>
                 </div>
               </div>
-              <p className="mt-4 text-xs leading-relaxed text-neutral-600">
+              <p className="mt-5 text-sm leading-relaxed text-neutral-600">
                 {member.bio}
               </p>
             </motion.article>

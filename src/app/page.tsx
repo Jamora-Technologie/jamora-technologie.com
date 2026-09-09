@@ -6,7 +6,6 @@ import { WordsBand, TagsBand } from "@/components/site/marquee";
 import { Team } from "@/components/site/team";
 import { Testimonials } from "@/components/site/testimonials";
 import { Contact } from "@/components/site/contact";
-import { Footer } from "@/components/site/footer";
 
 export default function Home() {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
       <Testimonials />
       <TagsBand />
       <Contact />
-      <Footer />
     </main>
   );
 }

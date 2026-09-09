@@ -37,7 +37,7 @@ export function Testimonials() {
     );
 
   return (
-    <section id="avis" className="overflow-hidden pb-20 sm:pb-24">
+    <section id="avis" className="scroll-mt-32 overflow-hidden pb-24 sm:pb-28">
       <div ref={containerRef} className="relative">
         <motion.div
           className="flex gap-5"
@@ -58,29 +58,29 @@ export function Testimonials() {
                 }}
                 transition={{ duration: 0.6, ease: easeOutExpo }}
                 onClick={() => setIndex(itemIndex)}
-                className="w-[300px] shrink-0 cursor-pointer rounded-2xl bg-white p-6 text-ink sm:w-[420px]"
+                className="w-[320px] shrink-0 cursor-pointer rounded-3xl bg-white p-8 text-ink sm:w-[500px]"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full">
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
-                        sizes="40px"
+                        sizes="48px"
                         className="object-cover"
                       />
                     </div>
                     <div>
-                      <p className="font-heading text-sm font-semibold">
+                      <p className="font-heading text-base font-semibold">
                         {item.name}
                       </p>
-                      <p className="text-xs text-neutral-500">{item.company}</p>
+                      <p className="text-sm text-neutral-500">{item.company}</p>
                     </div>
                   </div>
-                  <Quote className="h-5 w-5 shrink-0 fill-neutral-300 text-neutral-300" />
+                  <Quote className="h-6 w-6 shrink-0 fill-neutral-300 text-neutral-300" />
                 </div>
-                <p className="mt-5 text-sm leading-relaxed text-neutral-600">
+                <p className="mt-6 text-base leading-relaxed text-neutral-600">
                   {item.quote}
                 </p>
               </motion.div>
@@ -95,18 +95,18 @@ export function Testimonials() {
           onClick={() => move(-1)}
           disabled={index === 0}
           aria-label="Témoignage précédent"
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white transition-colors hover:border-brand hover:text-brand disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-white"
+          className="grid h-12 w-12 place-items-center rounded-full border border-white/15 text-white transition-colors hover:border-brand hover:text-brand disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-white"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-5 w-5" />
         </button>
         <button
           type="button"
           onClick={() => move(1)}
           disabled={index === testimonials.length - 1}
           aria-label="Témoignage suivant"
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white transition-colors hover:border-brand hover:text-brand disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-white"
+          className="grid h-12 w-12 place-items-center rounded-full border border-white/15 text-white transition-colors hover:border-brand hover:text-brand disabled:opacity-30 disabled:hover:border-white/15 disabled:hover:text-white"
         >
-          <ArrowRight className="h-4 w-4" />
+          <ArrowRight className="h-5 w-5" />
         </button>
       </div>
     </section>

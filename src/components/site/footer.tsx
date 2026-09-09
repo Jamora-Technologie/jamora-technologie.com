@@ -22,14 +22,14 @@ export function Footer() {
 
   return (
     <footer className="px-4 pb-4 sm:px-6 lg:px-10">
-      <div className="mx-auto max-w-6xl rounded-[2rem] bg-brand px-6 py-12 text-brand-foreground sm:rounded-[2.5rem] sm:px-10 sm:py-14">
+      <div className="mx-auto max-w-7xl rounded-[2rem] bg-brand px-7 py-14 text-brand-foreground sm:rounded-[2.5rem] sm:px-12 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_2fr_1.2fr] lg:gap-x-14">
           <div>
-            <div className="flex items-center gap-2 font-heading text-2xl font-semibold">
-              <Burst className="h-6 w-6" />
+            <div className="flex items-center gap-2.5 font-heading text-3xl font-semibold">
+              <Burst className="h-7 w-7" />
               {brand.name}
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed opacity-70">
+            <p className="mt-5 max-w-xs text-base leading-relaxed opacity-70">
               {footer.description}
             </p>
           </div>
@@ -37,7 +37,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {footer.columns.map((column) => (
               <div key={column.title}>
-                <p className="font-heading text-xs font-semibold uppercase tracking-wide">
+                <p className="font-heading text-sm font-semibold uppercase tracking-wide">
                   {column.title}
                 </p>
                 <ul className="mt-4 space-y-2.5">
@@ -45,7 +45,7 @@ export function Footer() {
                     <li key={link}>
                       <a
                         href="#top"
-                        className="text-sm opacity-70 transition-opacity hover:opacity-100"
+                        className="text-base opacity-70 transition-opacity hover:opacity-100"
                       >
                         {link}
                       </a>
@@ -57,10 +57,10 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-heading text-xs font-semibold uppercase tracking-wide">
+            <p className="font-heading text-sm font-semibold uppercase tracking-wide">
               {footer.newsletterTitle}
             </p>
-            <p className="mt-4 text-sm leading-relaxed opacity-70">
+            <p className="mt-5 text-base leading-relaxed opacity-70">
               {footer.newsletterBody}
             </p>
             <form
@@ -74,11 +74,11 @@ export function Footer() {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="Votre adresse e-mail"
                 aria-label="Votre adresse e-mail"
-                className="w-full rounded-lg bg-white/70 px-4 py-2.5 text-sm text-brand-foreground outline-none placeholder:text-brand-foreground/45 focus:bg-white"
+                className="w-full rounded-xl bg-white/70 px-5 py-3 text-base text-brand-foreground outline-none placeholder:text-brand-foreground/45 focus:bg-white"
               />
               <button
                 type="submit"
-                className="w-full rounded-lg bg-ink px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                className="w-full rounded-xl bg-ink px-5 py-3 text-base font-medium text-white transition-opacity hover:opacity-90"
               >
                 {footer.newsletterCta}
               </button>
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col-reverse items-center justify-between gap-4 border-t border-brand-foreground/15 pt-6 sm:flex-row">
-          <p className="text-xs opacity-70">
+          <p className="text-sm opacity-70">
             © {new Date().getFullYear()} {brand.fullName}. Tous droits réservés.
           </p>
           <div className="flex items-center gap-4">
@@ -98,7 +98,7 @@ export function Footer() {
                 aria-label={label}
                 className="opacity-70 transition-opacity hover:opacity-100"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-5 w-5" />
               </a>
             ))}
           </div>

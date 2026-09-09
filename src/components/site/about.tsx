@@ -9,19 +9,19 @@ export function About() {
   return (
     <section
       id="a-propos"
-      className="relative px-4 py-24 sm:px-6 sm:py-28 lg:px-10"
+      className="relative scroll-mt-32 px-4 py-28 sm:px-6 sm:py-32 lg:px-10"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-16">
           <Reveal>
-            <h2 className="font-heading text-3xl font-semibold leading-tight sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.25rem]">
               {about.title[0]}
               <br />
               {about.title[1]}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
+            <p className="max-w-lg text-base leading-relaxed text-white/60 sm:text-lg">
               {about.body}
             </p>
           </Reveal>
@@ -30,7 +30,7 @@ export function About() {
         <div className="mt-12 grid gap-5 sm:mt-16 lg:grid-cols-[1.55fr_1fr]">
           <Reveal className="relative">
             <Sparkle className="absolute -left-3 -top-5 z-10 h-8 w-8 text-brand" />
-            <div className="relative h-[260px] overflow-hidden rounded-2xl sm:h-[340px] lg:h-[380px]">
+            <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[400px] lg:h-[460px]">
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
                 alt="L'équipe Jamora Technologie en atelier de travail"
@@ -39,14 +39,14 @@ export function About() {
                 className="object-cover grayscale"
               />
               {/* Étiquette verte à cheval sur la photo */}
-              <div className="absolute bottom-8 left-0 flex items-center bg-brand py-3 pl-6 pr-16 font-heading text-sm font-semibold uppercase tracking-wide text-brand-foreground sm:pr-24">
+              <div className="absolute bottom-10 left-0 flex items-center bg-brand py-4 pl-7 pr-16 font-heading text-base font-semibold uppercase tracking-wide text-brand-foreground sm:pr-24">
                 {about.badge}
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.12} className="relative">
-            <div className="relative h-[260px] overflow-hidden rounded-2xl sm:h-[340px] lg:h-[380px]">
+            <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[400px] lg:h-[460px]">
               <Image
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
                 alt="Une designer souriante devant son écran"

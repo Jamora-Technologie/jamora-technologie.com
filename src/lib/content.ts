@@ -11,10 +11,10 @@ export const brand = {
 };
 
 export const navLinks = [
-  { label: "À propos", href: "#a-propos" },
-  { label: "Services", href: "#services" },
-  { label: "Projets", href: "#equipe" },
-  { label: "Avis", href: "#avis" },
+  { label: "À propos", href: "/#a-propos" },
+  { label: "Services", href: "/#services" },
+  { label: "Projets", href: "/projets" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const hero = {
@@ -207,3 +207,97 @@ export const footer = {
     "Recevez nos dernières idées, études de cas et ressources design directement dans votre boîte mail.",
   newsletterCta: "S'abonner",
 } as const;
+
+/**
+ * Projets présentés sur /projets.
+ *
+ * Ajouter un projet = ajouter un objet ici, rien d'autre à toucher.
+ * `logo` accepte une URL d'image ; laissé à `null`, la carte affiche
+ * le monogramme `initials` sur la couleur `accent`.
+ */
+export type Project = {
+  slug: string;
+  name: string;
+  tags: string[];
+  description: string;
+  href: string;
+  logo: string | null;
+  initials: string;
+  accent: string;
+  year?: string;
+};
+
+export const projects: Project[] = [
+  {
+    slug: "sendon",
+    name: "SenDon",
+    tags: ["Santé", "Gov'athon"],
+    description:
+      "Plateforme de mise en relation entre donneurs de sang et structures de santé, née lors du Gov'athon. SenDon centralise les besoins urgents des hôpitaux et alerte en temps réel les donneurs compatibles à proximité, pour réduire les délais critiques d'approvisionnement.",
+    href: "#",
+    logo: null,
+    initials: "SD",
+    accent: "#e5484d",
+    year: "2025",
+  },
+  {
+    slug: "projet-2",
+    name: "Projet #2",
+    tags: ["À compléter"],
+    description:
+      "Emplacement réservé : remplacez ce texte par la description du projet, son contexte et le résultat obtenu pour le client. Renseignez également le lien « Voir le projet » dans src/lib/content.ts.",
+    href: "#",
+    logo: null,
+    initials: "P2",
+    accent: "#a3e635",
+  },
+  {
+    slug: "projet-3",
+    name: "Projet #3",
+    tags: ["À compléter"],
+    description:
+      "Emplacement réservé : remplacez ce texte par la description du projet, son contexte et le résultat obtenu pour le client. Renseignez également le lien « Voir le projet » dans src/lib/content.ts.",
+    href: "#",
+    logo: null,
+    initials: "P3",
+    accent: "#4a9dff",
+  },
+];
+
+export const projectsPage = {
+  eyebrow: "NOS RÉALISATIONS",
+  titleLead: "Nos",
+  titleHighlight: "Projets",
+  body:
+    "Chaque projet part d'un besoin concret et se termine par un produit utilisé. Voici ce que nous avons construit.",
+  cta: "Voir le projet",
+};
+
+/** Bulle de signature affichée juste au-dessus du footer, sur toutes les pages. */
+export const signature = {
+  brand: "Jamora Technologie",
+  quote:
+    "La technologie au service de l'entente, de la connexion et de la coordination entre les acteurs pour résoudre des problèmes essentiels de notre société.",
+};
+
+export const contactPage = {
+  eyebrow: "PARLONS-EN",
+  titleLead: "Démarrons votre",
+  titleHighlight: "projet",
+  body:
+    "Décrivez-nous votre besoin en quelques lignes. Nous revenons vers vous sous 48 heures avec une première lecture et les prochaines étapes.",
+  fields: {
+    name: "Votre nom",
+    email: "Votre adresse e-mail",
+    company: "Entreprise (optionnel)",
+    subject: "Sujet",
+    message: "Parlez-nous de votre projet",
+  },
+  submit: "Envoyer le message",
+  success: "Message bien reçu. Nous vous répondons sous 48 heures.",
+  infos: [
+    { label: "E-mail", value: "contact@jamora-technologie.com" },
+    { label: "Localisation", value: "Dakar, Sénégal" },
+    { label: "Délai de réponse", value: "Sous 48 heures ouvrées" },
+  ],
+};

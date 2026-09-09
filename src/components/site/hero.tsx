@@ -4,21 +4,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { hero } from "@/lib/content";
-import { Navbar } from "@/components/site/navbar";
 import { Burst, Leaf, Squiggle } from "@/components/site/decor";
 import { easeOutExpo, fadeUp, staggerParent } from "@/components/motion/reveal";
 
 export function Hero() {
   return (
     <section id="top" className="relative bg-background pb-24 sm:pb-28">
-      <Navbar />
-
       <div className="px-3 pt-3 sm:px-4 sm:pt-4">
         <motion.div
           variants={staggerParent}
           initial="hidden"
           animate="visible"
-          className="relative mx-auto max-w-[1400px] rounded-[2rem] bg-white px-5 pb-28 pt-28 text-ink sm:rounded-[3rem] sm:px-10 sm:pb-32 sm:pt-36 lg:pt-40"
+          className="relative mx-auto max-w-[1600px] rounded-[2rem] bg-white px-6 pb-32 pt-36 text-ink sm:rounded-[3rem] sm:px-12 sm:pb-36 sm:pt-44 lg:pt-52"
         >
           {/* Décors du template */}
           <Burst className="absolute left-6 top-28 hidden h-12 w-12 text-brand lg:block xl:left-16 xl:h-14 xl:w-14" />
@@ -26,7 +23,7 @@ export function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mx-auto max-w-4xl text-balance text-center font-heading text-[2rem] font-semibold leading-[1.08] sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
+            className="mx-auto max-w-5xl text-balance text-center font-heading text-[2.5rem] font-semibold leading-[1.06] sm:text-6xl lg:text-7xl xl:text-[5rem]"
           >
             {hero.titleLines[0]}
             <br className="hidden sm:block" />{" "}
@@ -37,15 +34,15 @@ export function Hero() {
             {/* Colonne gauche : accroche + CTA fantôme */}
             <motion.div
               variants={fadeUp}
-              className="order-2 max-w-xs lg:order-1 lg:pb-16"
+              className="order-2 max-w-sm lg:order-1 lg:pb-20"
             >
               <Leaf className="mb-3 h-4 w-7 text-brand" />
-              <p className="text-sm leading-relaxed text-neutral-600">
+              <p className="text-base leading-relaxed text-neutral-600">
                 {hero.intro}
               </p>
               <a
                 href="#services"
-                className="mt-6 inline-flex items-center rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
+                className="mt-7 inline-flex items-center rounded-full border border-neutral-300 px-7 py-3 text-base font-medium text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
               >
                 {hero.ctaGhost}
               </a>
@@ -57,13 +54,13 @@ export function Hero() {
               className="order-1 flex justify-center lg:order-2"
             >
               <div className="relative">
-                <div className="relative h-[260px] w-[260px] overflow-hidden rounded-full bg-neutral-100 sm:h-[330px] sm:w-[330px] lg:h-[380px] lg:w-[380px]">
+                <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full bg-neutral-100 sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px]">
                   <Image
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80"
                     alt="Portrait d'une collaboratrice de Jamora Technologie"
                     fill
                     priority
-                    sizes="(max-width: 640px) 260px, (max-width: 1024px) 330px, 380px"
+                    sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 460px"
                     className="object-cover object-top"
                   />
                 </div>
@@ -74,21 +71,21 @@ export function Hero() {
             {/* Colonne droite : preuve sociale */}
             <motion.div
               variants={fadeUp}
-              className="order-3 flex flex-col items-center gap-1 lg:items-end lg:pb-16 lg:text-right"
+              className="order-3 flex flex-col items-center gap-1 lg:items-end lg:pb-20 lg:text-right"
             >
               <div className="flex gap-1">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star
                     key={index}
-                    className="h-4 w-4 fill-brand text-brand"
+                    className="h-5 w-5 fill-brand text-brand"
                     strokeWidth={0}
                   />
                 ))}
               </div>
-              <p className="font-heading text-3xl font-semibold lg:text-4xl">
+              <p className="font-heading text-4xl font-semibold lg:text-5xl">
                 {hero.experienceValue}
               </p>
-              <p className="text-sm text-neutral-500">{hero.experienceLabel}</p>
+              <p className="text-base text-neutral-500">{hero.experienceLabel}</p>
             </motion.div>
           </div>
 
@@ -102,13 +99,13 @@ export function Hero() {
             <div className="flex items-center gap-2 rounded-full bg-ink p-2 ring-1 ring-white/10">
               <a
                 href="#contact"
-                className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-transform hover:scale-[1.03] sm:px-6"
+                className="rounded-full bg-brand px-6 py-3 text-base font-medium text-brand-foreground transition-transform hover:scale-[1.03] sm:px-8"
               >
                 {hero.ctaPrimary}
               </a>
               <a
                 href="#services"
-                className="rounded-full px-5 py-2.5 text-sm font-medium text-white/90 transition-colors hover:text-brand sm:px-6"
+                className="rounded-full px-6 py-3 text-base font-medium text-white/90 transition-colors hover:text-brand sm:px-8"
               >
                 {hero.ctaSecondary}
               </a>

@@ -59,16 +59,16 @@ function ServiceRow({
       <a
         href="#contact"
         title={description}
-        className="group flex items-center gap-4 rounded-full border border-white/12 bg-white/[0.03] px-5 py-4 transition-colors hover:border-brand/60 hover:bg-brand/10"
+        className="group flex items-center gap-5 rounded-full border border-white/12 bg-white/[0.03] px-7 py-5 transition-colors hover:border-brand/60 hover:bg-brand/10"
       >
-        <span className="font-heading text-sm font-semibold text-brand">
+        <span className="font-heading text-base font-semibold text-brand">
           {id}
         </span>
-        <span className="flex-1 font-heading text-base font-medium text-white sm:text-lg">
+        <span className="flex-1 font-heading text-lg font-medium text-white sm:text-xl">
           {title}
         </span>
-        <span className="grid h-8 w-8 place-items-center rounded-full border border-white/15 text-white transition-all group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:-rotate-45" />
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white transition-all group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
+          <ArrowRight className="h-5 w-5 transition-transform group-hover:-rotate-45" />
         </span>
       </a>
     </motion.div>
@@ -77,8 +77,8 @@ function ServiceRow({
 
 export function Services() {
   return (
-    <section id="services" className="px-4 pb-24 sm:px-6 lg:px-10">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-5 py-14 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-10 sm:py-16">
+    <section id="services" className="scroll-mt-32 px-4 pb-28 sm:px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-16 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-20">
         <div className="glow-brand pointer-events-none absolute inset-0" />
 
         {/* Onglet vertical collé au bord gauche */}
@@ -91,7 +91,7 @@ export function Services() {
 
         <div className="relative lg:pl-10">
           <Reveal>
-            <h2 className="font-heading text-3xl font-semibold sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="font-heading text-4xl font-semibold sm:text-5xl lg:text-[3.25rem]">
               {servicesIntro.titleLead}{" "}
               <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
                 {servicesIntro.titleHighlight}
@@ -103,7 +103,7 @@ export function Services() {
             {/* Colonne 1 : intro + liste des services */}
             <div>
               <Reveal delay={0.05}>
-                <p className="max-w-sm text-sm leading-relaxed text-white/55">
+                <p className="max-w-md text-base leading-relaxed text-white/55">
                   {servicesIntro.body}
                 </p>
               </Reveal>
@@ -134,15 +134,15 @@ export function Services() {
             {/* Colonne 3 : deux cartes d'appel à l'action */}
             <div className="flex flex-col gap-4">
               <Reveal delay={0.15}>
-                <div className="flex h-full flex-col justify-between rounded-2xl border border-white/12 bg-white/[0.03] p-5">
-                  <p className="text-sm leading-relaxed text-white/60">
+                <div className="flex h-full flex-col justify-between rounded-3xl border border-white/12 bg-white/[0.03] p-6">
+                  <p className="text-base leading-relaxed text-white/60">
                     {servicesIntro.cardOne.question}
                   </p>
                   <a
                     href="#a-propos"
                     className="group mt-8 flex items-end justify-between gap-3"
                   >
-                    <span className="font-heading text-lg font-medium leading-tight text-white">
+                    <span className="font-heading text-xl font-medium leading-tight text-white">
                       {servicesIntro.cardOne.action}
                     </span>
                     <ArrowUpRight className="h-5 w-5 shrink-0 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -151,15 +151,15 @@ export function Services() {
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="flex h-full flex-col justify-between rounded-2xl bg-brand p-5 text-brand-foreground">
-                  <p className="text-sm leading-relaxed opacity-80">
+                <div className="flex h-full flex-col justify-between rounded-3xl bg-brand p-6 text-brand-foreground">
+                  <p className="text-base leading-relaxed opacity-80">
                     {servicesIntro.cardTwo.question}
                   </p>
                   <a
                     href="#contact"
                     className="group mt-8 flex items-end justify-between gap-3"
                   >
-                    <span className="font-heading text-lg font-medium leading-tight">
+                    <span className="font-heading text-xl font-medium leading-tight">
                       {servicesIntro.cardTwo.action}
                     </span>
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white transition-transform group-hover:scale-110">
