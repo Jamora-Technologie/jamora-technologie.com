@@ -6,14 +6,14 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { brand, footer } from "@/lib/content";
 import logoMark from "@/assets/img/logo/logo-mark.png";
 
-/** Filigrane géant qui défile en bas du footer, balayé par une lueur. */
+/** Filigrane géant qui défile au pied du footer, balayé par une lueur. */
 function Filigrane() {
   const mot = (
     <span
-      className="animate-shimmer bg-clip-text px-8 font-heading text-[11vw] font-black leading-none tracking-tight text-transparent"
+      className="animate-shimmer bg-clip-text px-8 font-heading text-[10vw] font-black leading-none tracking-tight text-transparent"
       style={{
         backgroundImage:
-          "linear-gradient(100deg, rgba(163,230,53,0.10) 25%, rgba(163,230,53,0.75) 45%, rgba(163,230,53,0.10) 65%)",
+          "linear-gradient(100deg, rgba(163,230,53,0.08) 25%, rgba(163,230,53,0.6) 45%, rgba(163,230,53,0.08) 65%)",
         backgroundSize: "200% 100%",
       }}
     >
@@ -26,9 +26,9 @@ function Filigrane() {
       aria-hidden
       className="pointer-events-none absolute inset-x-0 bottom-0 select-none overflow-hidden"
     >
-      {/* Le bas des lettres est volontairement rogné par le bord du bloc. */}
+      {/* Le bas des lettres est volontairement rogné par le bord de la page. */}
       <div
-        className="flex w-max translate-y-[16%] animate-marquee"
+        className="flex w-max translate-y-[18%] animate-marquee"
         style={{ ["--marquee-duration" as string]: "30s" }}
       >
         <div className="flex shrink-0">{mot}</div>
@@ -40,100 +40,101 @@ function Filigrane() {
 
 export function Footer() {
   return (
-    <footer className="px-4 pb-4 sm:px-6 lg:px-10">
+    <footer className="relative isolate overflow-hidden">
+      {/*
+        Le dégradé démarre sur le noir exact de la page : le footer n'a
+        ni bord ni coin, il émerge simplement du fond au fil du défilement.
+      */}
       <div
-        className="relative isolate overflow-hidden rounded-[2rem] sm:rounded-[2.5rem]"
+        className="absolute inset-0 -z-10"
         style={{
-          /* Clair en haut, puis fondu vers le noir du site : le footer se
-             raccorde à la page sans rupture. */
           backgroundImage:
-            "linear-gradient(180deg, #f7fee7 0%, #a3e635 7%, #3f6212 26%, #0e1a07 58%, #050505 100%)",
+            "linear-gradient(180deg, #050505 0%, #101c09 22%, #2c4a10 52%, #101c09 80%, #050505 100%)",
         }}
-      >
-        <Filigrane />
+      />
+      {/* Halo vert diffus, qui donne au raccord son épaisseur */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(70% 60% at 50% 40%, rgba(163,230,53,0.16) 0%, rgba(163,230,53,0) 70%)",
+        }}
+      />
 
-        <div className="relative z-10 px-6 pb-16 pt-14 sm:px-10 sm:pb-24 sm:pt-16">
-          {/* Panneau de verre dépoli portant tout le contenu */}
-          <div className="rounded-[1.75rem] border border-white/15 bg-white/[0.07] p-8 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-12">
-            <div className="flex flex-col items-center text-center">
-              <Link
-                href="/"
-                className="flex items-center gap-3 font-heading text-2xl font-semibold text-white transition-transform hover:scale-[1.03] sm:text-3xl"
-              >
-                <Image src={logoMark} alt="" className="h-9 w-auto sm:h-11" />
-                {brand.fullName}
-              </Link>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75">
-                {footer.description}
-              </p>
-            </div>
-
-            <div className="my-10 h-px bg-white/15" />
-
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {footer.columns.map((column) => (
-                <nav key={column.title} aria-label={column.title}>
-                  <p className="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-brand">
-                    {column.title}
-                  </p>
-                  <ul className="mt-5 space-y-3">
-                    {column.links.map((link) => (
-                      <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          className="text-base text-white/70 transition-colors hover:text-white"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              ))}
-
-              <div>
-                <p className="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-brand">
-                  {footer.contactTitle}
-                </p>
-                <ul className="mt-5 space-y-4 text-base text-white/70">
-                  <li>
-                    <a
-                      href={`mailto:${brand.email}`}
-                      className="group flex items-start gap-3 transition-colors hover:text-white"
-                    >
-                      <Mail className="mt-1 h-4 w-4 shrink-0" />
-                      <span className="group-hover:underline">{brand.email}</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={brand.phoneHref}
-                      className="group flex items-center gap-3 transition-colors hover:text-white"
-                    >
-                      <Phone className="h-4 w-4 shrink-0" />
-                      <span className="group-hover:underline">{brand.phone}</span>
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="h-4 w-4 shrink-0" />
-                    {brand.location}
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <div className="mx-auto max-w-7xl px-6 pb-[9vw] pt-16 sm:px-10 lg:px-12">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-12">
+          <div className="col-span-2 lg:col-span-1">
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 font-heading text-xl font-semibold text-white transition-transform hover:scale-[1.02]"
+            >
+              <Image src={logoMark} alt="" className="h-8 w-auto" />
+              {brand.fullName}
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+              {footer.description}
+            </p>
           </div>
 
-          <div className="mt-10 flex flex-col-reverse items-center justify-between gap-4 text-sm text-white/60 sm:flex-row">
-            <p>
-              © {new Date().getFullYear()} {brand.fullName}. Tous droits réservés.
+          {footer.columns.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <p className="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-brand">
+                {column.title}
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/65 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+
+          <div className="col-span-2 lg:col-span-1">
+            <p className="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-brand">
+              {footer.contactTitle}
             </p>
-            <p>{brand.domain}</p>
+            <ul className="mt-4 space-y-3 text-sm text-white/65">
+              <li>
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="group flex items-start gap-2.5 transition-colors hover:text-white"
+                >
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="group-hover:underline">{brand.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={brand.phoneHref}
+                  className="group flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <Phone className="h-4 w-4 shrink-0" />
+                  <span className="group-hover:underline">{brand.phone}</span>
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MapPin className="h-4 w-4 shrink-0" />
+                {brand.location}
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Réserve la place du filigrane sous le contenu */}
-        <div className="h-[8vw] sm:h-[9vw]" />
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <p className="text-sm text-white/50">
+            © {new Date().getFullYear()} {brand.fullName}. Tous droits réservés.
+          </p>
+        </div>
       </div>
+
+      <Filigrane />
     </footer>
   );
 }

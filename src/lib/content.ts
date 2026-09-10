@@ -37,7 +37,7 @@ export const hero = {
   ctaGhost: "Découvrir nos expertises",
   ctaPrimary: "Démarrer un projet",
   ctaSecondary: "Parler à un ingénieur",
-  experienceValue: "10 ans",
+  experienceValue: "4 ans",
   experienceLabel: "d'ingénierie cumulée",
 };
 
