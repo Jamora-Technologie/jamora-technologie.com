@@ -1,3 +1,7 @@
+import type { StaticImageData } from "next/image";
+import logoSendon from "@/assets/img/project/logo-sendon.png";
+import logoDaraJFood from "@/assets/img/project/logo-dara-j-food.png";
+
 /**
  * Contenu éditorial du site. Tout le texte vit ici pour qu'une relecture
  * (ou une traduction) ne touche jamais aux composants de présentation.
@@ -212,18 +216,20 @@ export const footer = {
  * Projets présentés sur /projets.
  *
  * Ajouter un projet = ajouter un objet ici, rien d'autre à toucher.
- * `logo` accepte une URL d'image ; laissé à `null`, la carte affiche
- * le monogramme `initials` sur la couleur `accent`.
+ * `logo` accepte un import statique depuis src/assets ; laissé à `null`,
+ * la carte affiche le monogramme `initials` sur la couleur `accent`.
+ * `status: "wip"` remplace le bouton par une mention « lien à venir ».
  */
 export type Project = {
   slug: string;
   name: string;
   tags: string[];
   description: string;
-  href: string;
-  logo: string | null;
+  href: string | null;
+  logo: StaticImageData | null;
   initials: string;
   accent: string;
+  status: "live" | "wip";
   year?: string;
 };
 
@@ -234,33 +240,23 @@ export const projects: Project[] = [
     tags: ["Santé", "Gov'athon"],
     description:
       "Plateforme de mise en relation entre donneurs de sang et structures de santé, née lors du Gov'athon. SenDon centralise les besoins urgents des hôpitaux et alerte en temps réel les donneurs compatibles à proximité, pour réduire les délais critiques d'approvisionnement.",
-    href: "#",
-    logo: null,
+    href: "https://www.sendon.sn",
+    logo: logoSendon,
     initials: "SD",
     accent: "#e5484d",
-    year: "2025",
+    status: "live",
   },
   {
-    slug: "projet-2",
-    name: "Projet #2",
-    tags: ["À compléter"],
+    slug: "dara-j-food",
+    name: "Dara-J-Food",
+    tags: ["Restauration", "En cours"],
     description:
-      "Emplacement réservé : remplacez ce texte par la description du projet, son contexte et le résultat obtenu pour le client. Renseignez également le lien « Voir le projet » dans src/lib/content.ts.",
-    href: "#",
-    logo: null,
-    initials: "P2",
-    accent: "#a3e635",
-  },
-  {
-    slug: "projet-3",
-    name: "Projet #3",
-    tags: ["À compléter"],
-    description:
-      "Emplacement réservé : remplacez ce texte par la description du projet, son contexte et le résultat obtenu pour le client. Renseignez également le lien « Voir le projet » dans src/lib/content.ts.",
-    href: "#",
-    logo: null,
-    initials: "P3",
-    accent: "#4a9dff",
+      "Dara-J-Food est une solution sénégalaise de digitalisation de la restauration qui simplifie et modernise la gestion des commandes en restaurant. De la prise de commande à la cuisine, en passant par la caisse, Dara-J-Food connecte chaque étape en temps réel afin de réduire les erreurs, accélérer le service et améliorer l'expérience client.",
+    href: null,
+    logo: logoDaraJFood,
+    initials: "DJ",
+    accent: "#d98430",
+    status: "wip",
   },
 ];
 
@@ -271,6 +267,7 @@ export const projectsPage = {
   body:
     "Chaque projet part d'un besoin concret et se termine par un produit utilisé. Voici ce que nous avons construit.",
   cta: "Voir le projet",
+  ctaWip: "Projet en cours — lien à venir",
 };
 
 /** Bulle de signature affichée juste au-dessus du footer, sur toutes les pages. */
