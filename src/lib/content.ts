@@ -15,7 +15,7 @@ import photoDaouda from "@/assets/img/teams/daouda.jpeg";
 export const brand = {
   name: "Jamora",
   fullName: "Jamora Technologie",
-  domain: "",
+  domain: "jamora-technologie.sn",
   email: "contact@jamora-technologie.com",
   phone: "+221 78 796 44 36",
   /** Même numéro, normalisé pour les liens tel: */

@@ -1,28 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { brand, footer } from "@/lib/content";
-import { Burst } from "@/components/site/decor";
+import logoLockup from "@/assets/img/logo/logo-lockup.png";
 
 export function Footer() {
   return (
     <footer className="px-4 pb-4 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-brand px-6 py-14 text-brand-foreground sm:rounded-[2.5rem] sm:px-12 sm:py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
-          <div>
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 font-heading text-2xl font-semibold"
-            >
-              <Burst className="h-7 w-7" />
-              {brand.fullName}
-            </Link>
-            <p className="mt-4 max-w-xs text-base leading-relaxed opacity-70">
-              {footer.description}
-            </p>
-          </div>
+        {/* Bloc de marque centré */}
+        <div className="flex flex-col items-center text-center">
+          <Link href="/" aria-label={brand.fullName} className="inline-block">
+            {/*
+              Le logo est noir sur fond blanc. `mix-blend-multiply` fait
+              disparaître ce blanc dans le vert du footer : blanc × fond = fond,
+              tandis que le lettrage noir reste intact.
+            */}
+            <Image
+              src={logoLockup}
+              alt=""
+              className="h-12 w-auto mix-blend-multiply transition-transform hover:scale-[1.03] sm:h-14"
+            />
+          </Link>
+          <p className="mt-6 max-w-xl text-base leading-relaxed opacity-70">
+            {footer.description}
+          </p>
+        </div>
 
+        <div className="my-12 h-px bg-brand-foreground/15" />
+
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {footer.columns.map((column) => (
             <nav key={column.title} aria-label={column.title}>
               <p className="font-heading text-xs font-semibold uppercase tracking-[0.15em]">
