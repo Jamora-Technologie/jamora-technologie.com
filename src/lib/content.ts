@@ -15,7 +15,7 @@ import photoDaouda from "@/assets/img/teams/daouda.jpeg";
 export const brand = {
   name: "Jamora",
   fullName: "Jamora Technologie",
-  domain: "jamora-technologie.sn",
+  domain: "",
   email: "contact@jamora-technologie.com",
   phone: "+221 78 796 44 36",
   /** Même numéro, normalisé pour les liens tel: */
@@ -114,8 +114,6 @@ export type TeamMember = {
   bio: string;
   linkedin: string;
   photo: StaticImageData;
-  /** Couleur du haut du portrait, pour un raccord invisible avec la carte. */
-  tone: string;
 };
 
 export const team = {
@@ -130,7 +128,6 @@ export const team = {
       bio: "Ingénieur logiciel orienté produit et expérience utilisateur, il pilote le développement des solutions web et mobiles de Jamora Technologie. Il transforme les idées en produits concrets, intuitifs et accessibles, avec une attention particulière portée à l'expérience utilisateur.",
       linkedin: "https://www.linkedin.com/in/cheikh-mbacke-coly-26047127b/",
       photo: photoCmc,
-      tone: "#e1ba83",
     },
     {
       slug: "ousmane-ndieguene",
@@ -140,7 +137,6 @@ export const team = {
       bio: "Ingénieur spécialisé en intelligence artificielle et technologies intelligentes, il pilote la vision produit et contribue à la conception de l'architecture IA de SenDon. Il veille à transformer les besoins métiers en solutions innovantes, pertinentes et évolutives.",
       linkedin: "https://www.linkedin.com/in/mirfou111",
       photo: photoOusmane,
-      tone: "#d7b07b",
     },
     {
       slug: "mouhamet-diagne",
@@ -150,7 +146,6 @@ export const team = {
       bio: "Ingénieur logiciel, il définit et supervise l'architecture technique ainsi que l'infrastructure des solutions de Jamora Technologie. Il garantit la robustesse, la scalabilité et la fiabilité des systèmes développés.",
       linkedin: "https://www.linkedin.com/in/mouhamet-diagne-394957320/",
       photo: photoDiagne,
-      tone: "#e0b982",
     },
     {
       slug: "yaye-fatimatou-tall",
@@ -160,7 +155,6 @@ export const team = {
       bio: "Spécialisée en médecine, stratégie digitale et communication, elle pilote l'expérience utilisateur (UX) et veille à la cohérence des orientations médicales des solutions. Elle contribue également à la définition des stratégies digitales et de communication de Jamora Technologie et de ses différents projets.",
       linkedin: "https://www.linkedin.com/in/yaye-fatimatou-tall-b51bab2b4",
       photo: photoYaye,
-      tone: "#e3b888",
     },
     {
       slug: "daouda-dieng",
@@ -170,7 +164,6 @@ export const team = {
       bio: "Ingénieur en sciences des données, il conçoit et exploite les solutions de valorisation des données de Jamora Technologie. Il contribue à transformer les données en informations utiles pour soutenir la prise de décision, l'intelligence produit et l'innovation.",
       linkedin: "https://www.linkedin.com/in/daouda-dieng-14106b285",
       photo: photoDaouda,
-      tone: "#dfb881",
     },
   ] satisfies TeamMember[],
 };

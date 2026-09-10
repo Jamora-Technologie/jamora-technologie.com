@@ -11,6 +11,12 @@ import { cn } from "@/lib/utils";
 
 const PANEL_WIDTH = 360;
 
+/**
+ * Couleur de la plaque de titre, commune à toutes les cartes.
+ * Elle reprend le fond beige des portraits pour prolonger la photo.
+ */
+const PLAQUE = "#dfb881";
+
 /** Contenu du panneau déplié, partagé par les deux mises en page. */
 function MemberDetails({ member }: { member: TeamMember }) {
   return (
@@ -69,7 +75,7 @@ function MemberCard({
           "relative flex h-full flex-col overflow-hidden rounded-3xl ring-offset-2 ring-offset-background transition-opacity duration-500 group-focus-visible:ring-2 group-focus-visible:ring-brand",
           dimmed && "lg:opacity-45",
         )}
-        style={{ backgroundColor: member.tone }}
+        style={{ backgroundColor: PLAQUE }}
       >
         <div className="relative z-10 h-[112px] shrink-0 px-5 pt-5">
           <h3 className="font-heading text-lg font-bold leading-tight text-ink">
