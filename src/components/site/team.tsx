@@ -7,13 +7,21 @@ import { ArrowUpRight } from "lucide-react";
 import { team, type TeamMember } from "@/lib/content";
 import { Reveal, easeOutExpo } from "@/components/motion/reveal";
 import { LinkedinIcon } from "@/components/site/decor";
+import { cn } from "@/lib/utils";
+
+const PANEL_WIDTH = 360;
 
 /** Contenu du panneau déplié, partagé par les deux mises en page. */
 function MemberDetails({ member }: { member: TeamMember }) {
   return (
     <>
-      <p className="text-sm font-medium italic text-brand">{member.title}</p>
-      <p className="mt-3 text-sm leading-relaxed text-white/80">{member.bio}</p>
+      <p className="font-heading text-lg font-semibold text-white">
+        {member.name}
+      </p>
+      <p className="mt-1 text-sm font-medium italic text-brand">
+        {member.title}
+      </p>
+      <p className="mt-4 text-sm leading-relaxed text-white/75">{member.bio}</p>
       <a
         href={member.linkedin}
         target="_blank"
@@ -32,96 +40,100 @@ function MemberDetails({ member }: { member: TeamMember }) {
 function MemberCard({
   member,
   isActive,
+  dimmed,
+  openLeft,
   onActivate,
+  onToggle,
 }: {
   member: TeamMember;
   isActive: boolean;
+  dimmed: boolean;
+  openLeft: boolean;
   onActivate: () => void;
+  onToggle: () => void;
 }) {
   return (
-    <motion.article
-      /*
-       * `flexGrow` ne joue qu'en rangée (lg et plus) : en colonne, le
-       * conteneur n'a pas de hauteur fixe, donc aucun espace libre à
-       * répartir. La même animation sert les deux mises en page.
-       */
-      animate={{ flexGrow: isActive ? 3 : 1 }}
-      transition={{ duration: 0.6, ease: easeOutExpo }}
+    <article
       onMouseEnter={onActivate}
+      onClick={onToggle}
       onFocus={onActivate}
-      onClick={onActivate}
       tabIndex={0}
-      aria-expanded={isActive}
-      style={{ backgroundColor: member.tone }}
-      className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl outline-none ring-offset-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-brand lg:h-auto lg:basis-0"
+      className={cn(
+        "group relative cursor-pointer outline-none lg:h-[460px] lg:w-[220px] lg:shrink-0",
+        isActive ? "z-20" : "z-10",
+      )}
     >
-      {/* Bandeau de titre : la photo commence dessous, jamais derrière */}
-      <div className="relative z-10 h-[112px] shrink-0 px-5 pt-5">
-        <h3 className="font-heading text-lg font-bold leading-tight text-ink">
-          {member.name}
-        </h3>
-        <p className="mt-1 text-[13px] font-medium text-ink/70">
-          {member.role}
-        </p>
-      </div>
+      {/* Bloc visuel : sa taille ne change jamais, même carte ouverte */}
+      <div
+        className={cn(
+          "relative flex h-full flex-col overflow-hidden rounded-3xl ring-offset-2 ring-offset-background transition-opacity duration-500 group-focus-visible:ring-2 group-focus-visible:ring-brand",
+          dimmed && "lg:opacity-45",
+        )}
+        style={{ backgroundColor: member.tone }}
+      >
+        <div className="relative z-10 h-[112px] shrink-0 px-5 pt-5">
+          <h3 className="font-heading text-lg font-bold leading-tight text-ink">
+            {member.name}
+          </h3>
+          <p className="mt-1 text-[13px] font-medium text-ink/70">
+            {member.role}
+          </p>
+        </div>
 
-      <div className="relative flex h-[340px] min-h-0 lg:h-auto lg:flex-1">
-        <div className="relative min-w-0 flex-1">
+        <div className="relative h-[340px] min-h-0 lg:h-auto lg:flex-1">
           <Image
             src={member.photo}
             alt={member.name}
             fill
-            sizes="(max-width: 1024px) 100vw, 30vw"
+            sizes="(max-width: 1024px) 100vw, 220px"
             className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
           />
-
-          {/* Raccourci LinkedIn sur les cartes repliées */}
-          {!isActive && (
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`LinkedIn de ${member.name}`}
-              onClick={(event) => event.stopPropagation()}
-              className="absolute bottom-4 right-4 grid h-10 w-10 place-items-center rounded-xl bg-ink/80 text-white backdrop-blur transition-colors hover:bg-brand hover:text-brand-foreground"
-            >
-              <LinkedinIcon className="h-4 w-4" />
-            </a>
-          )}
-
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`LinkedIn de ${member.name}`}
+            onClick={(event) => event.stopPropagation()}
+            className="absolute bottom-4 right-4 grid h-10 w-10 place-items-center rounded-xl bg-ink/80 text-white backdrop-blur transition-colors hover:bg-brand hover:text-brand-foreground lg:opacity-100 lg:group-hover:opacity-0"
+          >
+            <LinkedinIcon className="h-4 w-4" />
+          </a>
         </div>
-
-        {/*
-          Desktop : le panneau se déplie à côté de la photo. En absorbant
-          toute la largeur gagnée, il évite que la photo change de format
-          et se recadre brutalement à chaque ouverture.
-        */}
-        <motion.div
-          animate={{ width: isActive ? 300 : 0 }}
-          transition={{ duration: 0.6, ease: easeOutExpo }}
-          className="hidden shrink-0 overflow-hidden bg-ink/90 lg:block"
-        >
-          <div className="w-[300px] p-6">
-            <AnimatePresence>
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 16 }}
-                  transition={{ duration: 0.4, ease: easeOutExpo, delay: 0.15 }}
-                >
-                  <MemberDetails member={member} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
       </div>
 
       {/*
-        Mobile : le panneau se déplie sous la photo au lieu de la recouvrir.
-        Un texte long masquerait sinon complètement le visage.
+        Desktop : le panneau se déplie à côté de la carte, en superposition.
+        Il flotte au-dessus des voisines au lieu de les comprimer, ce qui
+        garde la taille des cartes strictement constante.
       */}
+      <motion.div
+        animate={{ width: isActive ? PANEL_WIDTH : 0 }}
+        transition={{ duration: 0.5, ease: easeOutExpo }}
+        className={cn(
+          "absolute top-0 hidden h-full overflow-hidden rounded-3xl bg-[#111] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)] ring-1 ring-white/10 lg:block",
+          openLeft ? "right-full mr-3" : "left-full ml-3",
+        )}
+      >
+        <div
+          className="flex h-full flex-col justify-center p-8"
+          style={{ width: PANEL_WIDTH }}
+        >
+          <AnimatePresence>
+            {isActive && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.35, ease: easeOutExpo, delay: 0.18 }}
+              >
+                <MemberDetails member={member} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+
+      {/* Mobile : dépliement vertical, sous la photo */}
       <AnimatePresence initial={false}>
         {isActive && (
           <motion.div
@@ -129,20 +141,20 @@ function MemberCard({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.45, ease: easeOutExpo }}
-            className="overflow-hidden bg-ink/92 lg:hidden"
+            className="overflow-hidden rounded-b-3xl bg-[#111] lg:hidden"
           >
-            <div className="p-5">
+            <div className="p-6">
               <MemberDetails member={member} />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.article>
+    </article>
   );
 }
 
 export function Team() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
 
   return (
     <section id="equipe" className="scroll-mt-32 px-4 pb-28 sm:px-6 lg:px-10">
@@ -172,13 +184,23 @@ export function Team() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="relative mt-10 flex flex-col gap-4 lg:h-[560px] lg:flex-row">
+          <div
+            onMouseLeave={() => setActive(null)}
+            className="relative mt-10 flex flex-col gap-4 lg:flex-row lg:justify-center"
+          >
             {team.members.map((member, index) => (
               <MemberCard
                 key={member.slug}
                 member={member}
                 isActive={active === index}
+                dimmed={active !== null && active !== index}
+                /* Les deux dernières s'ouvrent vers la gauche pour ne pas
+                   déborder du bloc. */
+                openLeft={index >= team.members.length - 2}
                 onActivate={() => setActive(index)}
+                onToggle={() =>
+                  setActive((current) => (current === index ? null : index))
+                }
               />
             ))}
           </div>
