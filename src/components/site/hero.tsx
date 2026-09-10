@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 import { hero } from "@/lib/content";
 import { Burst, Leaf } from "@/components/site/decor";
 import { HeroNetwork } from "@/components/site/hero-network";
-import { easeOutExpo, fadeUp, staggerParent } from "@/components/motion/reveal";
+import { fadeUp, staggerParent } from "@/components/motion/reveal";
 
 export function Hero() {
   return (
@@ -16,7 +16,7 @@ export function Hero() {
           variants={staggerParent}
           initial="hidden"
           animate="visible"
-          className="relative mx-auto max-w-[1500px] rounded-[2rem] bg-white px-5 pb-28 pt-28 text-ink sm:rounded-[3rem] sm:px-10 sm:pb-32 sm:pt-32 lg:pt-36"
+          className="relative mx-auto max-w-[1500px] rounded-[2rem] bg-white px-5 pb-16 pt-28 text-ink sm:rounded-[3rem] sm:px-10 sm:pb-20 sm:pt-32 lg:pt-36"
         >
           <Burst className="absolute left-6 top-28 hidden h-12 w-12 text-brand lg:block xl:left-16 xl:h-14 xl:w-14" />
           <Leaf className="absolute right-10 top-36 hidden h-6 w-10 rotate-12 text-brand lg:block" />
@@ -58,18 +58,24 @@ export function Hero() {
           </motion.div>
 
           {/* Le réseau : la marque au centre, expertises et applications autour */}
-          <motion.div variants={fadeUp} className="mt-10 sm:mt-12">
+          <motion.div variants={fadeUp} className="mt-6 sm:mt-8">
             <HeroNetwork />
           </motion.div>
 
-          {/* Pilule de CTA à cheval sur le bord du bloc blanc */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: easeOutExpo, delay: 0.45 }}
-            className="absolute inset-x-0 bottom-0 flex translate-y-1/2 justify-center px-4"
+            variants={fadeUp}
+            className="relative mt-10 flex justify-center sm:mt-12"
           >
-            <div className="flex items-center gap-2 rounded-full bg-ink p-2 ring-1 ring-white/10">
+            {/*
+              Le verre dépoli n'a d'effet que s'il a quelque chose à flouter :
+              ce halo vert donne au dégradé de la pilule de quoi transparaître
+              sur le blanc du bloc.
+            */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 h-24 w-80 -translate-y-1/2 rounded-full bg-brand/45 blur-3xl"
+            />
+            <div className="relative flex items-center gap-2 rounded-full border border-ink/10 bg-white/55 p-2 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
               <Link
                 href="/contact"
                 className="rounded-full bg-brand px-6 py-3 text-base font-medium text-brand-foreground transition-transform hover:scale-[1.03] sm:px-8"
@@ -78,12 +84,13 @@ export function Hero() {
               </Link>
               <a
                 href="#equipe"
-                className="rounded-full px-6 py-3 text-base font-medium text-white/90 transition-colors hover:text-brand sm:px-8"
+                className="rounded-full px-6 py-3 text-base font-medium text-ink/75 transition-colors hover:text-ink sm:px-8"
               >
                 {hero.ctaSecondary}
               </a>
             </div>
           </motion.div>
+
         </motion.div>
       </div>
     </section>

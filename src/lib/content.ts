@@ -47,7 +47,7 @@ export const hero = {
  */
 export const stats = [
   { value: 2000, suffix: "+", label: "Utilisateurs touchés" },
-  { value: 10, suffix: "+", label: "Ans d'ingénierie cumulée" },
+  { value: 4, suffix: "+", label: "Ans d'ingénierie cumulée" },
   { value: 800, suffix: "+", label: "Heures de développement" },
   { value: 150, suffix: "M+", label: "Requêtes traitées" },
 ] as const;
