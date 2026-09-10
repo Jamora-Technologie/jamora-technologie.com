@@ -45,6 +45,8 @@
   --animate-marquee: marquee var(--marquee-duration, 30s) linear infinite;
   --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 30s) linear infinite;
   --animate-spin-slow: spin 18s linear infinite;
+  --animate-signal: signal var(--signal-duration, 3s) linear infinite;
+  --animate-breathe: breathe 4s ease-in-out infinite;
 
   @keyframes marquee {
     from {
@@ -60,6 +62,31 @@
     }
     to {
       transform: translateX(0);
+    }
+  }
+
+  /* Impulsion lumineuse parcourant une liaison du hero.
+     Les tracés déclarent pathLength="1000" : le motif de tirets est donc
+     exprimé en centièmes de la longueur, quelle que soit la courbe. */
+  @keyframes signal {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Halo du nœud central, qui respire lentement. */
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.12);
     }
   }
 }
