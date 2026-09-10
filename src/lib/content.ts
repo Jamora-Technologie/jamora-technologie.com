@@ -27,75 +27,84 @@ export const navLinks = [
 ] as const;
 
 export const hero = {
-  titleLines: ["Faire rayonner les marques", "par des solutions créatives"],
+  titleLines: ["Des plateformes solides,", "des expériences fluides"],
   intro:
-    "Du développement web au branding, nous concevons des stratégies innovantes qui élèvent votre marque et accélèrent votre croissance. Créons ensemble quelque chose d'exceptionnel.",
-  ctaGhost: "Révéler ma marque",
+    "De l'intelligence artificielle au développement web et mobile, nous concevons des plateformes bâties sur des architectures modernes et résilientes — pensées pour tenir la charge sans jamais sacrifier l'ergonomie.",
+  ctaGhost: "Découvrir nos expertises",
   ctaPrimary: "Démarrer un projet",
-  ctaSecondary: "Collaborons",
+  ctaSecondary: "Parler à un ingénieur",
   experienceValue: "10 ans",
-  experienceLabel: "d'expérience",
+  experienceLabel: "d'ingénierie cumulée",
 };
 
+/**
+ * ⚠️ Chiffres hérités de la maquette : à remplacer par les données réelles
+ * de Jamora Technologie avant toute mise en ligne.
+ */
 export const stats = [
-  { value: 2000, suffix: "+", label: "Entreprises" },
-  { value: 10, suffix: "+", label: "Ans d'expérience" },
-  { value: 800, suffix: "+", label: "Heures de digital" },
-  { value: 150, suffix: "M+", label: "De revenus générés" },
+  { value: 2000, suffix: "+", label: "Utilisateurs touchés" },
+  { value: 10, suffix: "+", label: "Ans d'ingénierie cumulée" },
+  { value: 800, suffix: "+", label: "Heures de développement" },
+  { value: 150, suffix: "M+", label: "Requêtes traitées" },
 ] as const;
 
 export const about = {
-  title: ["Transformer les idées", "en chefs-d'œuvre"],
+  title: ["Transformer les idées", "en systèmes durables"],
   body:
-    "Nous sommes une équipe compacte, mais notre créativité ne connaît pas de limites. En restant agiles et en travaillant main dans la main avec nos clients, nous transformons les idées en designs avant-gardistes qui laissent une empreinte durable.",
-  badge: "UNE AGENCE DE DESIGN CRÉATIF",
+    "Nous sommes une équipe compacte, et c'est une force : chaque décision d'architecture est prise en connaissance de cause, jamais héritée par inertie. Nous construisons des systèmes testés, documentés et prêts à évoluer — des plateformes qui restent maintenables longtemps après la mise en ligne.",
+  badge: "INGÉNIERIE LOGICIELLE & PRODUIT",
 };
 
 export const services = [
   {
     id: "01",
-    title: "Design UI/UX",
+    title: "Intelligence Artificielle",
     description:
-      "Des interfaces claires, testées et pensées pour convertir, de la recherche utilisateur au design system.",
+      "Modèles prédictifs, traitement du langage et automatisation intégrés au cœur du produit — du prototype à la mise en production supervisée.",
   },
   {
     id: "02",
     title: "Développement Web",
     description:
-      "Des sites et applications rapides, accessibles et maintenables, construits avec les standards du web moderne.",
+      "Plateformes web bâties sur des architectures modernes : découpage clair, tests automatisés et montée en charge maîtrisée.",
   },
   {
     id: "03",
-    title: "Design 3D",
+    title: "Développement Mobile",
     description:
-      "Des visuels et scènes 3D qui donnent du relief à vos produits et racontent votre marque autrement.",
+      "Applications iOS et Android fluides, robustes en connexion dégradée, taillées pour les usages réels du terrain.",
   },
   {
     id: "04",
-    title: "Motion Design",
+    title: "Design UI/UX",
     description:
-      "Des animations et habillages vidéo qui rendent votre communication mémorable sur tous les écrans.",
+      "Interfaces claires et accessibles, design systems cohérents, parcours validés par la recherche utilisateur avant la première ligne de code.",
+  },
+  {
+    id: "05",
+    title: "Solutions sur mesure",
+    description:
+      "Systèmes métiers conçus pour votre organisation : intégrations, automatisations et outils internes qui s'ancrent dans vos processus existants.",
   },
 ] as const;
 
 export const servicesIntro = {
-  eyebrow: "CE QUE NOUS FAISONS",
+  eyebrow: "NOS EXPERTISES",
   titleLead: "Nos",
   titleHighlight: "Services",
   body:
-    "Nous proposons une gamme complète de services créatifs et digitaux conçus pour faire ressortir votre marque.",
+    "Cinq expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne — c'est ce qui rend les systèmes cohérents.",
   cardOne: {
-    question: "Vous vous demandez comment opère la magie du design ?",
+    question: "Vous vous demandez comment nous construisons ?",
     action: "Voir notre méthode",
   },
   cardTwo: {
-    question:
-      "Besoin d'experts pour donner vie à votre vision ?",
-    action: "Parler à un expert",
+    question: "Un système à concevoir, ou un existant à reprendre ?",
+    action: "Parler à un ingénieur",
   },
 };
 
-export const marqueeWords = ["Innover", "Inspirer", "Créer"] as const;
+export const marqueeWords = ["Concevoir", "Architecturer", "Déployer"] as const;
 
 /**
  * Équipe fondatrice. L'ordre du tableau est l'ordre d'affichage des cartes.
@@ -198,25 +207,25 @@ export const testimonials = [
 ] as const;
 
 export const tagWords = [
-  "Design UX",
-  "Design d'app",
-  "Dashboard",
-  "Wireframe",
-  "Recherche utilisateur",
-  "Branding",
+  "Intelligence artificielle",
+  "Architecture logicielle",
+  "Développement web",
+  "Applications mobiles",
+  "Design system",
+  "Solutions sur mesure",
 ] as const;
 
 export const contact = {
-  title: "Parlons de votre projet",
+  title: "Un système à construire ?",
   body:
-    "Transformons vos idées en expériences digitales exceptionnelles. Que vous cherchiez une refonte complète ou un site vitrine, nous sommes là.",
+    "Nouvelle plateforme, refonte d'un existant ou reprise d'une base technique fragile : décrivez-nous le contexte, nous vous répondons avec une première lecture d'architecture.",
   placeholder: "Votre adresse e-mail",
   cta: "Nous écrire",
 };
 
 export const footer = {
   description:
-    "Nous transformons vos idées en expériences digitales mémorables, avec des designs pensés pour la croissance, la clarté et l'impact.",
+    "Nous concevons des plateformes numériques résilientes : architectures modernes, code testé et interfaces pensées pour durer.",
   columns: [
     {
       title: "ENTREPRISE",
@@ -237,7 +246,7 @@ export const footer = {
   ],
   newsletterTitle: "ABONNEZ-VOUS À NOTRE NEWSLETTER",
   newsletterBody:
-    "Recevez nos dernières idées, études de cas et ressources design directement dans votre boîte mail.",
+    "Nos retours d'expérience sur l'architecture, l'IA appliquée et le design produit, directement dans votre boîte mail.",
   newsletterCta: "S'abonner",
 } as const;
 
@@ -298,7 +307,7 @@ export const homeProjects = {
   titleLead: "Nos",
   titleHighlight: "produits phare",
   body:
-    "Au-delà des missions clients, nous concevons nos propres produits pour répondre à des besoins concrets au Sénégal.",
+    "Au-delà des missions clients, nous concevons nos propres plateformes pour répondre à des besoins concrets au Sénégal — et nous les exploitons en conditions réelles.",
   cta: "Découvrir tous les projets",
 };
 
@@ -307,7 +316,7 @@ export const projectsPage = {
   titleLead: "Nos",
   titleHighlight: "Projets",
   body:
-    "Chaque projet part d'un besoin concret et se termine par un produit utilisé. Voici ce que nous avons construit.",
+    "Chaque projet part d'un besoin concret et se termine par une plateforme en production. Voici ce que nous avons construit.",
   cta: "Voir le projet",
   ctaWip: "Projet en cours — lien à venir",
 };

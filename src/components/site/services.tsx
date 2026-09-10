@@ -133,7 +133,7 @@ export function Services() {
 
             {/* Colonne 3 : deux cartes d'appel à l'action */}
             <div className="flex flex-col gap-4">
-              <Reveal delay={0.15}>
+              <Reveal delay={0.15} className="flex-1">
                 <div className="flex h-full flex-col justify-between rounded-3xl border border-white/12 bg-white/[0.03] p-6">
                   <p className="text-base leading-relaxed text-white/60">
                     {servicesIntro.cardOne.question}
@@ -150,7 +150,7 @@ export function Services() {
                 </div>
               </Reveal>
 
-              <Reveal delay={0.2}>
+              <Reveal delay={0.2} className="flex-1">
                 <div className="flex h-full flex-col justify-between rounded-3xl bg-brand p-6 text-brand-foreground">
                   <p className="text-base leading-relaxed opacity-80">
                     {servicesIntro.cardTwo.question}
