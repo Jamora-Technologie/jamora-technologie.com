@@ -219,6 +219,7 @@ export const footer = {
  * `logo` accepte un import statique depuis src/assets ; laissé à `null`,
  * la carte affiche le monogramme `initials` sur la couleur `accent`.
  * `status: "wip"` remplace le bouton par une mention « lien à venir ».
+ * `featured: true` fait remonter le projet sur la page d'accueil.
  */
 export type Project = {
   slug: string;
@@ -230,6 +231,7 @@ export type Project = {
   initials: string;
   accent: string;
   status: "live" | "wip";
+  featured: boolean;
   year?: string;
 };
 
@@ -245,6 +247,7 @@ export const projects: Project[] = [
     initials: "SD",
     accent: "#e5484d",
     status: "live",
+    featured: true,
   },
   {
     slug: "dara-j-food",
@@ -257,8 +260,18 @@ export const projects: Project[] = [
     initials: "DJ",
     accent: "#d98430",
     status: "wip",
+    featured: false,
   },
 ];
+
+export const homeProjects = {
+  eyebrow: "CE QUE NOUS CONSTRUISONS",
+  titleLead: "Nos",
+  titleHighlight: "produits phare",
+  body:
+    "Au-delà des missions clients, nous concevons nos propres produits pour répondre à des besoins concrets au Sénégal.",
+  cta: "Découvrir tous les projets",
+};
 
 export const projectsPage = {
   eyebrow: "NOS RÉALISATIONS",
