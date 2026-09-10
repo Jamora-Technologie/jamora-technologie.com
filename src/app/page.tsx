@@ -5,7 +5,6 @@ import { Services } from "@/components/site/services";
 import { FeaturedProjects } from "@/components/site/featured-projects";
 import { WordsBand, TagsBand } from "@/components/site/marquee";
 import { Team } from "@/components/site/team";
-import { Testimonials } from "@/components/site/testimonials";
 import { Contact } from "@/components/site/contact";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <FeaturedProjects />
       <WordsBand />
       <Team />
-      <Testimonials />
       <TagsBand />
       <Contact />
     </main>

@@ -168,33 +168,6 @@ export const team = {
   ] satisfies TeamMember[],
 };
 
-export const testimonials = [
-  {
-    name: "Alan Baker",
-    company: "CEO de Medford Company",
-    quote:
-      "Travailler avec Jamora Technologie a été une expérience incroyable. L'équipe a vraiment écouté nos besoins et livré un design remarquable qui a dépassé nos attentes.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-  },
-  {
-    name: "Theresa Webb",
-    company: "CEO de Medford Company",
-    quote:
-      "De la première esquisse à la mise en ligne, tout a été fluide. Une équipe qui comprend le produit autant que le design.",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-  },
-  {
-    name: "Fatou Mbaye",
-    company: "Directrice marketing, Teranga Group",
-    quote:
-      "Un vrai plaisir de collaborer avec eux. Ils ont apporté des idées créatives que nous n'aurions jamais imaginées seuls.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-  },
-] as const;
-
 export const tagWords = [
   "Intelligence artificielle",
   "Architecture logicielle",
@@ -208,7 +181,6 @@ export const contact = {
   title: "Un système à construire ?",
   body:
     "Nouvelle plateforme, refonte d'un existant ou reprise d'une base technique fragile : décrivez-nous le contexte, nous vous répondons avec une première lecture d'architecture.",
-  placeholder: "Votre adresse e-mail",
   cta: "Nous écrire",
 };
 
