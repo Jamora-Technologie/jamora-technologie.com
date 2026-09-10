@@ -1,62 +1,95 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { about } from "@/lib/content";
 import { Reveal } from "@/components/motion/reveal";
-import { BulbDoodle, Sparkle } from "@/components/site/decor";
+import { Sparkle } from "@/components/site/decor";
 
 export function About() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    /*
+     * La vidéo ne se charge et ne tourne que lorsque la bande est à
+     * l'écran : `preload="none"` évite 4,7 Mo de téléchargement aux
+     * visiteurs qui ne descendent jamais jusqu'ici, et la mise en pause
+     * hors champ épargne le décodage.
+     */
+    if (reduceMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => {
+            /* Lecture refusée par le navigateur : l'affiche reste visible. */
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [reduceMotion]);
+
   return (
-    <section
-      id="a-propos"
-      className="relative scroll-mt-32 px-4 py-28 sm:px-6 sm:py-32 lg:px-10"
-    >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-16">
+    <section id="a-propos" className="relative scroll-mt-32 py-24 sm:py-28">
+      <div className="relative isolate overflow-hidden">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          poster="/movie/jtech-poster.jpg"
+          preload="none"
+          muted
+          loop
+          playsInline
+          aria-hidden
+        >
+          <source src="/movie/jtech.mp4" type="video/mp4" />
+        </video>
+
+        {/* Voile sombre : rend le texte lisible quel que soit le plan diffusé */}
+        <div className="absolute inset-0 bg-ink/78" />
+        {/* Fondu haut et bas, pour que la bande émerge du noir de la page */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, #050505 0%, rgba(5,5,5,0) 22%, rgba(5,5,5,0) 78%, #050505 100%)",
+          }}
+        />
+        {/* Teinte de marque, très diffuse */}
+        <div className="glow-brand-left absolute inset-0 opacity-70" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-32 lg:px-12">
           <Reveal>
-            <h2 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.25rem]">
-              {about.title[0]}
-              <br />
-              {about.title[1]}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-lg text-base leading-relaxed text-white/60 sm:text-lg">
-              {about.body}
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-12 grid gap-5 sm:mt-16 lg:grid-cols-[1.55fr_1fr]">
-          <Reveal className="relative">
-            <Sparkle className="absolute -left-3 -top-5 z-10 h-8 w-8 text-brand" />
-            <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[400px] lg:h-[460px]">
-              <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
-                alt="L'équipe Jamora Technologie en atelier de travail"
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover grayscale"
-              />
-              {/* Étiquette verte à cheval sur la photo */}
-              <div className="absolute bottom-10 left-0 flex items-center bg-brand py-4 pl-7 pr-16 font-heading text-base font-semibold uppercase tracking-wide text-brand-foreground sm:pr-24">
-                {about.badge}
-              </div>
-            </div>
+            <motion.span className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-brand-foreground">
+              <Sparkle className="h-3.5 w-3.5" />
+              {about.badge}
+            </motion.span>
           </Reveal>
 
-          <Reveal delay={0.12} className="relative">
-            <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[400px] lg:h-[460px]">
-              <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
-                alt="Une designer souriante devant son écran"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover grayscale"
-              />
-              <BulbDoodle className="absolute right-6 top-6 h-14 w-14 text-red-500" />
-            </div>
-          </Reveal>
+          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <Reveal delay={0.08}>
+              <h2 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.5rem]">
+                {about.title[0]}
+                <br />
+                {about.title[1]}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <p className="max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
+                {about.body}
+              </p>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

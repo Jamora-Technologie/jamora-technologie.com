@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Rushes vidéo : sources lourdes conservées en local uniquement.
+# Les versions web encodées vivent dans public/movie/.
+/src/assets/movie/*.mov
