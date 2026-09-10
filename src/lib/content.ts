@@ -237,9 +237,9 @@ export const projects: Project[] = [
   {
     slug: "sendon",
     name: "SenDon",
-    tags: ["Santé", "Gov'athon"],
+    tags: ["e-Santé", "Gov'athon", "Amref", "Gitex Africa Morocco 2026"],
     description:
-      "Plateforme de mise en relation entre donneurs de sang et structures de santé, née lors du Gov'athon. SenDon centralise les besoins urgents des hôpitaux et alerte en temps réel les donneurs compatibles à proximité, pour réduire les délais critiques d'approvisionnement.",
+      "SenDon est une plateforme nationale e-santé dédiée au don de sang au Sénégal, reliant donneurs, structures de santé et le CNTS pour optimiser la gestion et la disponibilité du sang. SenDon intègre l'IA (SenDon-AI), capable de prédire les cas de pénuries afin d'anticiper les besoins.",
     href: "https://www.sendon.sn",
     logo: logoSendon,
     initials: "SD",
