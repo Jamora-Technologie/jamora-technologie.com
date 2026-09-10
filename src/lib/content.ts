@@ -1,6 +1,11 @@
 import type { StaticImageData } from "next/image";
 import logoSendon from "@/assets/img/project/logo-sendon.jpg";
 import logoDaraJFood from "@/assets/img/project/logo-dara-j-food.jpg";
+import photoCmc from "@/assets/img/teams/cmc.png";
+import photoOusmane from "@/assets/img/teams/ousmane.jpeg";
+import photoDiagne from "@/assets/img/teams/diagne.jpeg";
+import photoYaye from "@/assets/img/teams/yaye.jpeg";
+import photoDaouda from "@/assets/img/teams/daouda.jpeg";
 
 /**
  * Contenu éditorial du site. Tout le texte vit ici pour qu'une relecture
@@ -92,54 +97,78 @@ export const servicesIntro = {
 
 export const marqueeWords = ["Innover", "Inspirer", "Créer"] as const;
 
+/**
+ * Équipe fondatrice. L'ordre du tableau est l'ordre d'affichage des cartes.
+ * Ajouter un membre = ajouter une entrée avec son portrait importé ci-dessus.
+ */
+export type TeamMember = {
+  slug: string;
+  name: string;
+  role: string;
+  title: string;
+  bio: string;
+  linkedin: string;
+  photo: StaticImageData;
+  /** Couleur du haut du portrait, pour un raccord invisible avec la carte. */
+  tone: string;
+};
+
 export const team = {
   title: ["Rencontrez", "l'équipe"],
   pill: "REJOIGNEZ-NOUS",
   members: [
     {
-      name: "Awa Diallo",
-      role: "Directrice générale & fondatrice",
-      bio: "12 ans d'expérience en marketing digital, expertise SEO, SEA et stratégie de contenu.",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+      slug: "cheikh-mbacke-coly",
+      name: "Cheikh Mbacké Coly",
+      role: "CEO & Co-Founder",
+      title: "Ingénieur Logiciel",
+      bio: "Ingénieur logiciel orienté produit et expérience utilisateur, il pilote le développement des solutions web et mobiles de Jamora Technologie. Il transforme les idées en produits concrets, intuitifs et accessibles, avec une attention particulière portée à l'expérience utilisateur.",
+      linkedin: "https://www.linkedin.com/in/cheikh-mbacke-coly-26047127b/",
+      photo: photoCmc,
+      tone: "#e1ba83",
     },
     {
-      name: "Moussa Ndiaye",
-      role: "Directeur des opérations",
-      bio: "10 ans en gestion de produit et pilotage d'équipe. Solides compétences en organisation et communication.",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      slug: "ousmane-ndieguene",
+      name: "Ousmane Ndiéguène",
+      role: "CPO & Co-Founder",
+      title: "Ingénieur IA & SmartTech",
+      bio: "Ingénieur spécialisé en intelligence artificielle et technologies intelligentes, il pilote la vision produit et contribue à la conception de l'architecture IA de SenDon. Il veille à transformer les besoins métiers en solutions innovantes, pertinentes et évolutives.",
+      linkedin: "https://www.linkedin.com/in/mirfou111",
+      photo: photoOusmane,
+      tone: "#d7b07b",
     },
     {
-      name: "Michel Brown",
-      role: "Spécialiste SEO senior",
-      bio: "8 ans d'expérience en SEO et création de contenu. Maîtrise de la recherche de mots-clés et de l'optimisation on-page.",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+      slug: "mouhamet-diagne",
+      name: "Mouhamet Diagne",
+      role: "CTO & Co-Founder",
+      title: "Ingénieur Logiciel",
+      bio: "Ingénieur logiciel, il définit et supervise l'architecture technique ainsi que l'infrastructure des solutions de Jamora Technologie. Il garantit la robustesse, la scalabilité et la fiabilité des systèmes développés.",
+      linkedin: "https://www.linkedin.com/in/mouhamet-diagne-394957320/",
+      photo: photoDiagne,
+      tone: "#e0b982",
     },
     {
-      name: "Emily Johnson",
-      role: "Responsable PPC",
-      bio: "6 ans d'expérience en publicité payante. Experte en campagnes, gestion de budget et analyse de performance.",
-      image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+      slug: "yaye-fatimatou-tall",
+      name: "Yaye Fatimatou Tall",
+      role: "CXO & Co-Founder",
+      title: "Medical & Digital Strategy Manager",
+      bio: "Spécialisée en médecine, stratégie digitale et communication, elle pilote l'expérience utilisateur (UX) et veille à la cohérence des orientations médicales des solutions. Elle contribue également à la définition des stratégies digitales et de communication de Jamora Technologie et de ses différents projets.",
+      linkedin: "https://www.linkedin.com/in/yaye-fatimatou-tall-b51bab2b4",
+      photo: photoYaye,
+      tone: "#e3b888",
     },
     {
-      name: "Bineta Sow",
-      role: "Spécialiste réseaux sociaux",
-      bio: "5 ans en social media marketing. Maîtrise de la création de contenu, du calendrier éditorial et de l'engagement.",
-      image:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80",
+      slug: "daouda-dieng",
+      name: "Daouda Dieng",
+      role: "CDO & Co-Founder",
+      title: "Ingénieur en Sciences des Données",
+      bio: "Ingénieur en sciences des données, il conçoit et exploite les solutions de valorisation des données de Jamora Technologie. Il contribue à transformer les données en informations utiles pour soutenir la prise de décision, l'intelligence produit et l'innovation.",
+      linkedin: "https://www.linkedin.com/in/daouda-dieng-14106b285",
+      photo: photoDaouda,
+      tone: "#dfb881",
     },
-    {
-      name: "Sarah Kim",
-      role: "Rédactrice de contenu",
-      bio: "4 ans en rédaction web et copywriting. Optimise le contenu pour tous les secteurs d'activité.",
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
-    },
-  ],
-} as const;
+  ] satisfies TeamMember[],
+};
 
 export const testimonials = [
   {
