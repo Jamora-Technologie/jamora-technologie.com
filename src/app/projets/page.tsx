@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/site/page-header";
 import { ProjectCard } from "@/components/site/project-card";
 
 export const metadata: Metadata = {
-  title: "Projets - Jamora Technologie",
+  title: "Projets — Jamora Technologie",
   description:
     "Les réalisations de Jamora Technologie : produits digitaux conçus et livrés pour des besoins concrets.",
 };

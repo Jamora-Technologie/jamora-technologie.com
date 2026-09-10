@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/site/page-header";
 import { ContactForm } from "@/components/site/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact - Jamora Technologie",
+  title: "Contact — Jamora Technologie",
   description:
     "Parlez-nous de votre projet. Nous revenons vers vous sous 48 heures.",
 };
