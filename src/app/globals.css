@@ -47,6 +47,7 @@
   --animate-spin-slow: spin 18s linear infinite;
   --animate-signal: signal var(--signal-duration, 3s) linear infinite;
   --animate-breathe: breathe 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 6s linear infinite;
 
   @keyframes marquee {
     from {
@@ -74,6 +75,18 @@
     }
     to {
       stroke-dashoffset: 0;
+    }
+  }
+
+  /* Balayage lumineux du filigrane du footer : c'est la position du
+     dégradé qui se déplace, pas l'élément — le texte lui-même défile
+     déjà par ailleurs. */
+  @keyframes shimmer {
+    from {
+      background-position: 200% 50%;
+    }
+    to {
+      background-position: -200% 50%;
     }
   }
 
