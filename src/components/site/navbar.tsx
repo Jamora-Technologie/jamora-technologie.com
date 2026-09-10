@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { brand, navLinks } from "@/lib/content";
-import { Burst } from "@/components/site/decor";
+import logoJamora from "@/assets/img/logo/logo-navbar.png";
 import { easeOutExpo } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -78,13 +79,23 @@ export function Navbar() {
           ))}
         </div>
 
+        {/*
+          Le logo est noir sur fond blanc : posé tel quel sur la barre sombre,
+          le lettrage disparaîtrait. Il est donc incorporé dans un cadre blanc
+          arrondi, qui lui sert de fond porteur.
+        */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2.5 font-heading text-xl font-semibold text-white sm:text-2xl"
+          aria-label={brand.fullName}
+          className="flex shrink-0 items-center rounded-lg bg-white px-3.5 py-2 shadow-[0_6px_20px_-6px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.03] sm:px-4 sm:py-2.5"
         >
-          <Burst className="h-6 w-6 text-brand sm:h-7 sm:w-7" />
-          {brand.name}
+          <Image
+            src={logoJamora}
+            alt={brand.fullName}
+            priority
+            className="h-7 w-auto sm:h-8"
+          />
         </Link>
 
         <div className="hidden flex-1 items-center justify-end gap-9 md:flex">

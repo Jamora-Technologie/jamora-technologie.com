@@ -6,7 +6,7 @@ import { Diamond, Sparkle } from "@/components/site/decor";
 /**
  * Défilement infini : le contenu est dupliqué à l'identique et translaté
  * de -50%, si bien que la seconde copie prend exactement la place de la
- * première au moment où le cycle recommence — la boucle est invisible.
+ * première au moment où le cycle recommence - la boucle est invisible.
  */
 function Track({
   children,

@@ -29,7 +29,7 @@ export const navLinks = [
 export const hero = {
   titleLines: ["Des plateformes solides,", "des expériences fluides"],
   intro:
-    "De l'intelligence artificielle au développement web et mobile, nous concevons des plateformes bâties sur des architectures modernes et résilientes — pensées pour tenir la charge sans jamais sacrifier l'ergonomie.",
+    "De l'intelligence artificielle au développement web et mobile, nous concevons des plateformes bâties sur des architectures modernes et résilientes - pensées pour tenir la charge sans jamais sacrifier l'ergonomie.",
   ctaGhost: "Découvrir nos expertises",
   ctaPrimary: "Démarrer un projet",
   ctaSecondary: "Parler à un ingénieur",
@@ -51,7 +51,7 @@ export const stats = [
 export const about = {
   title: ["Transformer les idées", "en systèmes durables"],
   body:
-    "Nous sommes une équipe compacte, et c'est une force : chaque décision d'architecture est prise en connaissance de cause, jamais héritée par inertie. Nous construisons des systèmes testés, documentés et prêts à évoluer — des plateformes qui restent maintenables longtemps après la mise en ligne.",
+    "Nous sommes une équipe compacte, et c'est une force : chaque décision d'architecture est prise en connaissance de cause, jamais héritée par inertie. Nous construisons des systèmes testés, documentés et prêts à évoluer - des plateformes qui restent maintenables longtemps après la mise en ligne.",
   badge: "INGÉNIERIE LOGICIELLE & PRODUIT",
 };
 
@@ -60,7 +60,7 @@ export const services = [
     id: "01",
     title: "Intelligence Artificielle",
     description:
-      "Modèles prédictifs, traitement du langage et automatisation intégrés au cœur du produit — du prototype à la mise en production supervisée.",
+      "Modèles prédictifs, traitement du langage et automatisation intégrés au cœur du produit - du prototype à la mise en production supervisée.",
   },
   {
     id: "02",
@@ -93,7 +93,7 @@ export const servicesIntro = {
   titleLead: "Nos",
   titleHighlight: "Services",
   body:
-    "Cinq expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne — c'est ce qui rend les systèmes cohérents.",
+    "Cinq expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne - c'est ce qui rend les systèmes cohérents.",
   cardOne: {
     question: "Vous vous demandez comment nous construisons ?",
     action: "Voir notre méthode",
@@ -307,7 +307,7 @@ export const homeProjects = {
   titleLead: "Nos",
   titleHighlight: "produits phare",
   body:
-    "Au-delà des missions clients, nous concevons nos propres plateformes pour répondre à des besoins concrets au Sénégal — et nous les exploitons en conditions réelles.",
+    "Au-delà des missions clients, nous concevons nos propres plateformes pour répondre à des besoins concrets au Sénégal et nous les exploitons en conditions réelles.",
   cta: "Découvrir tous les projets",
 };
 
@@ -318,7 +318,7 @@ export const projectsPage = {
   body:
     "Chaque projet part d'un besoin concret et se termine par une plateforme en production. Voici ce que nous avons construit.",
   cta: "Voir le projet",
-  ctaWip: "Projet en cours — lien à venir",
+  ctaWip: "Projet en cours - lien à venir",
 };
 
 /** Bulle de signature affichée juste au-dessus du footer, sur toutes les pages. */
