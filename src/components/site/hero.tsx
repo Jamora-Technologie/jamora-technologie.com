@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { hero } from "@/lib/content";
@@ -97,14 +98,14 @@ export function Hero() {
             className="absolute inset-x-0 bottom-0 flex translate-y-1/2 justify-center px-4"
           >
             <div className="flex items-center gap-2 rounded-full bg-ink p-2 ring-1 ring-white/10">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="rounded-full bg-brand px-6 py-3 text-base font-medium text-brand-foreground transition-transform hover:scale-[1.03] sm:px-8"
               >
                 {hero.ctaPrimary}
-              </a>
+              </Link>
               <a
-                href="#services"
+                href="#equipe"
                 className="rounded-full px-6 py-3 text-base font-medium text-white/90 transition-colors hover:text-brand sm:px-8"
               >
                 {hero.ctaSecondary}

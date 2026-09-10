@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services, servicesIntro } from "@/lib/content";
 import { Reveal, easeOutExpo } from "@/components/motion/reveal";
 
@@ -99,7 +99,7 @@ export function Services() {
             </h2>
           </Reveal>
 
-          <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr_0.7fr] lg:gap-6">
+          <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-[1fr_1fr] lg:gap-8">
             {/* Colonne 1 : intro + liste des services */}
             <div>
               <Reveal delay={0.05}>
@@ -131,44 +131,6 @@ export function Services() {
               </div>
             </Reveal>
 
-            {/* Colonne 3 : deux cartes d'appel à l'action */}
-            <div className="flex flex-col gap-4">
-              <Reveal delay={0.15} className="flex-1">
-                <div className="flex h-full flex-col justify-between rounded-3xl border border-white/12 bg-white/[0.03] p-6">
-                  <p className="text-base leading-relaxed text-white/60">
-                    {servicesIntro.cardOne.question}
-                  </p>
-                  <a
-                    href="#a-propos"
-                    className="group mt-8 flex items-end justify-between gap-3"
-                  >
-                    <span className="font-heading text-xl font-medium leading-tight text-white">
-                      {servicesIntro.cardOne.action}
-                    </span>
-                    <ArrowUpRight className="h-5 w-5 shrink-0 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </a>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2} className="flex-1">
-                <div className="flex h-full flex-col justify-between rounded-3xl bg-brand p-6 text-brand-foreground">
-                  <p className="text-base leading-relaxed opacity-80">
-                    {servicesIntro.cardTwo.question}
-                  </p>
-                  <a
-                    href="#contact"
-                    className="group mt-8 flex items-end justify-between gap-3"
-                  >
-                    <span className="font-heading text-xl font-medium leading-tight">
-                      {servicesIntro.cardTwo.action}
-                    </span>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white transition-transform group-hover:scale-110">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </a>
-                </div>
-              </Reveal>
-            </div>
           </div>
         </div>
       </div>

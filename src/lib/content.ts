@@ -17,6 +17,10 @@ export const brand = {
   fullName: "Jamora Technologie",
   domain: "jamora-technologie.sn",
   email: "contact@jamora-technologie.com",
+  phone: "+221 78 796 44 36",
+  /** Même numéro, normalisé pour les liens tel: */
+  phoneHref: "tel:+221787964436",
+  location: "Dakar, Sénégal",
 };
 
 export const navLinks = [
@@ -94,14 +98,6 @@ export const servicesIntro = {
   titleHighlight: "Services",
   body:
     "Cinq expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne — c'est ce qui rend les systèmes cohérents.",
-  cardOne: {
-    question: "Vous vous demandez comment nous construisons ?",
-    action: "Voir notre méthode",
-  },
-  cardTwo: {
-    question: "Un système à concevoir, ou un existant à reprendre ?",
-    action: "Parler à un ingénieur",
-  },
 };
 
 export const marqueeWords = ["Concevoir", "Architecturer", "Déployer"] as const;
@@ -228,26 +224,27 @@ export const footer = {
     "Nous concevons des plateformes numériques résilientes : architectures modernes, code testé et interfaces pensées pour durer.",
   columns: [
     {
-      title: "ENTREPRISE",
-      links: ["À propos", "Notre équipe", "Carrières", "Contact", "Blog"],
+      title: "NAVIGATION",
+      links: [
+        { label: "À propos", href: "/#a-propos" },
+        { label: "Services", href: "/#services" },
+        { label: "Projets", href: "/projets" },
+        { label: "Équipe", href: "/#equipe" },
+        { label: "Contact", href: "/contact" },
+      ],
     },
     {
-      title: "SUPPORT",
-      links: ["Premiers pas", "Aide", "Devis", "Signaler un bug", "Chat support"],
-    },
-    {
-      title: "PRODUITS",
-      links: ["Fonctionnalités", "Tarifs", "Études de cas", "Intégrations"],
-    },
-    {
-      title: "TÉLÉCHARGEMENTS",
-      links: ["iOS", "Android", "Kit de marque"],
+      title: "EXPERTISES",
+      links: [
+        { label: "Intelligence Artificielle", href: "/#services" },
+        { label: "Développement Web", href: "/#services" },
+        { label: "Développement Mobile", href: "/#services" },
+        { label: "Design UI/UX", href: "/#services" },
+        { label: "Solutions sur mesure", href: "/#services" },
+      ],
     },
   ],
-  newsletterTitle: "ABONNEZ-VOUS À NOTRE NEWSLETTER",
-  newsletterBody:
-    "Nos retours d'expérience sur l'architecture, l'IA appliquée et le design produit, directement dans votre boîte mail.",
-  newsletterCta: "S'abonner",
+  contactTitle: "CONTACT",
 } as const;
 
 /**
@@ -343,9 +340,11 @@ export const contactPage = {
   },
   submit: "Envoyer le message",
   success: "Message bien reçu. Nous vous répondons sous 48 heures.",
+  /** `href` optionnel : rend la coordonnée directement actionnable. */
   infos: [
-    { label: "E-mail", value: "contact@jamora-technologie.com" },
-    { label: "Localisation", value: "Dakar, Sénégal" },
-    { label: "Délai de réponse", value: "Sous 48 heures ouvrées" },
+    { label: "E-mail", value: brand.email, href: `mailto:${brand.email}` },
+    { label: "Téléphone", value: brand.phone, href: brand.phoneHref },
+    { label: "Localisation", value: brand.location, href: null },
+    { label: "Délai de réponse", value: "Sous 48 heures ouvrées", href: null },
   ],
 };

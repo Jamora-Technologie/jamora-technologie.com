@@ -32,7 +32,16 @@ export default function ContactPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand">
                   {info.label}
                 </p>
-                <p className="mt-2 text-lg text-white/85">{info.value}</p>
+                {info.href ? (
+                  <a
+                    href={info.href}
+                    className="mt-2 inline-block text-lg text-white/85 transition-colors hover:text-brand"
+                  >
+                    {info.value}
+                  </a>
+                ) : (
+                  <p className="mt-2 text-lg text-white/85">{info.value}</p>
+                )}
               </div>
             ))}
           </aside>
