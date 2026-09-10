@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
-import logoSendon from "@/assets/img/project/logo-sendon.png";
-import logoDaraJFood from "@/assets/img/project/logo-dara-j-food.png";
+import logoSendon from "@/assets/img/project/logo-sendon.jpg";
+import logoDaraJFood from "@/assets/img/project/logo-dara-j-food.jpg";
 
 /**
  * Contenu éditorial du site. Tout le texte vit ici pour qu'une relecture
