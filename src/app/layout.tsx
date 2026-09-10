@@ -36,6 +36,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${outfit.variable} ${inter.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
+        {/*
+          Les entrées animées sont rendues à opacity:0 côté serveur et ne
+          réapparaissent que lorsque Framer Motion démarre. Sans JavaScript,
+          la page resterait donc vide : ce filet rétablit la visibilité.
+        */}
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <Navbar />
         {children}
         <Signature />
