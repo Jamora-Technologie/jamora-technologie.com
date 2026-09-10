@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { brand, navLinks } from "@/lib/content";
-import { Burst } from "@/components/site/decor";
+import logoMark from "@/assets/img/logo/logo-mark.png";
 import { easeOutExpo } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -78,13 +79,22 @@ export function Navbar() {
           ))}
         </div>
 
+        {/*
+          Le pictogramme fourni est blanc sur fond transparent : il se pose
+          directement sur la barre sombre, sans cadre porteur.
+        */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2.5 font-heading text-xl font-semibold text-white sm:text-2xl"
+          className="flex shrink-0 items-center gap-2.5 font-heading text-lg font-semibold whitespace-nowrap text-white sm:text-xl"
         >
-          <Burst className="h-6 w-6 text-brand sm:h-7 sm:w-7" />
-          {brand.name}
+          <Image
+            src={logoMark}
+            alt=""
+            priority
+            className="h-7 w-auto sm:h-8"
+          />
+          {brand.fullName}
         </Link>
 
         <div className="hidden flex-1 items-center justify-end gap-9 md:flex">
