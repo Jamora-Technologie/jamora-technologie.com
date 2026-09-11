@@ -80,8 +80,15 @@ Copiez-la, puis :
 source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
 npm install --include=dev
-npm run build
+npm run build:webpack
 ```
+
+**`build:webpack`, et non `build`.** Le serveur o2switch tourne sur une
+glibc antérieure à 2.29, alors que le binaire natif de Next en exige au
+moins cette version. Next se rabat donc sur ses bindings WebAssembly —
+or Turbopack, utilisé par `npm run build`, réclame impérativement les
+bindings natifs et s'arrête. Webpack, lui, fonctionne avec le WASM.
+Le build est plus lent (quelques minutes), le résultat est identique.
 
 **`--include=dev` n'est pas optionnel.** Le mode « Production » de cPanel
 exporte `NODE_ENV=production`, que npm interprète comme un `--omit=dev`
@@ -112,11 +119,34 @@ source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
 git pull
 npm install --include=dev
-npm run build
+npm run build:webpack
 ```
 
 Puis **Restart** dans cPanel. Un redémarrage est indispensable : Passenger
 garde le code en mémoire.
+
+---
+
+## Vérifier l'optimisation des images
+
+`sharp`, qui redimensionne les images côté serveur, est lui aussi un
+module natif soumis à la même contrainte de glibc. Après le build :
+
+```bash
+node -e "require('sharp'); console.log('sharp opérationnel')"
+```
+
+Si la commande échoue sur une erreur `GLIBC`, ajoutez dans
+[`next.config.ts`](next.config.ts) :
+
+```ts
+images: { unoptimized: true },
+```
+
+Les images sont alors servies telles quelles, sans redimensionnement.
+Il faut dans ce cas les optimiser en amont : les portraits d'équipe
+pèsent 2,5 Mo à eux seuls en taille d'origine, pour un affichage en
+220 × 460 px.
 
 ---
 
@@ -129,6 +159,9 @@ garde le code en mémoire.
   suffit au site.
 - **`allowedDevOrigins`** dans [`next.config.ts`](next.config.ts) ne sert
   qu'au développement en réseau local ; il est sans effet en production.
+- **Le script `build` (Turbopack) ne fonctionne pas sur ce serveur.**
+  Utilisez toujours `build:webpack`. `build` reste utilisable en local,
+  où il est nettement plus rapide.
 - **Après un changement de version de Node** dans cPanel, relancez
   `npm install` : les binaires natifs sont liés à la version. Le chemin
   d'activation change aussi, `.../nodevenv/jamora-technologie/<version>/...`.
