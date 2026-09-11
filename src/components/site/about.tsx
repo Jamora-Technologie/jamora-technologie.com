@@ -40,7 +40,7 @@ export function About() {
   }, [reduceMotion]);
 
   return (
-    <section id="a-propos" className="relative scroll-mt-32 py-24 sm:py-28">
+    <section id="a-propos" className="relative scroll-mt-32 py-20 sm:py-24">
       <div className="relative isolate overflow-hidden">
         <video
           ref={videoRef}
@@ -68,7 +68,7 @@ export function About() {
         {/* Teinte de marque, très diffuse */}
         <div className="glow-brand-left absolute inset-0 opacity-70" />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-32 lg:px-12">
+        <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-24 lg:px-12">
           <Reveal>
             <motion.span className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-brand-foreground">
               <Sparkle className="h-3.5 w-3.5" />
@@ -78,7 +78,7 @@ export function About() {
 
           <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
             <Reveal delay={0.08}>
-              <h2 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.5rem]">
+              <h2 className="font-heading text-[1.875rem] font-semibold leading-tight sm:text-[2.375rem] lg:text-[2.875rem]">
                 <WordReveal text={about.title[0]} />
                 <br />
                 <WordReveal text={about.title[1]} delay={0.15} />

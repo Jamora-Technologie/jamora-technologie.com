@@ -12,9 +12,9 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-32 px-4 py-24 sm:px-6 sm:py-28 lg:px-10"
+      className="scroll-mt-32 px-4 py-20 sm:px-6 sm:py-24 lg:px-10"
     >
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-20 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-24">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-16 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-20">
         <div className="glow-brand pointer-events-none absolute inset-0" />
 
         {/* Étoiles décoratives, en écho aux bandeaux du site */}
@@ -23,7 +23,7 @@ export function Contact() {
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
           <Reveal>
-            <h2 className="text-balance font-heading text-4xl font-semibold sm:text-5xl lg:text-[3.5rem]">
+            <h2 className="text-balance font-heading text-[1.875rem] font-semibold sm:text-[2.375rem] lg:text-[2.875rem]">
               {contact.title}
             </h2>
           </Reveal>

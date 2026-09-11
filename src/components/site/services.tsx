@@ -46,7 +46,7 @@ function ServiceRow({
 export function Services() {
   return (
     <section id="services" className="scroll-mt-32 px-4 pb-28 sm:px-6 lg:px-10">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-16 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-20">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0d0d0d] px-6 py-14 ring-1 ring-white/10 sm:rounded-[2.5rem] sm:px-12 sm:py-16">
         <div className="glow-brand pointer-events-none absolute inset-0" />
 
         {/* Onglet vertical collé au bord gauche */}
@@ -59,7 +59,7 @@ export function Services() {
 
         <div className="relative lg:pl-10">
           <Reveal>
-            <h2 className="font-heading text-4xl font-semibold sm:text-5xl lg:text-[3.25rem]">
+            <h2 className="font-heading text-[1.875rem] font-semibold sm:text-[2.375rem] lg:text-[2.875rem]">
               {servicesIntro.titleLead}{" "}
               <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
                 {servicesIntro.titleHighlight}

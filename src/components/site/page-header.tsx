@@ -19,7 +19,7 @@ export function PageHeader({
   body: string;
 }) {
   return (
-    <section className="relative px-4 pb-8 pt-40 sm:px-6 sm:pb-12 sm:pt-48 lg:px-10">
+    <section className="relative px-4 pb-8 pt-32 sm:px-6 sm:pb-10 sm:pt-40 lg:px-10">
       <div className="glow-brand pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-7xl">
         <Reveal>
@@ -28,7 +28,7 @@ export function PageHeader({
           </p>
         </Reveal>
         <Reveal delay={0.06}>
-          <h1 className="mt-4 font-heading text-4xl font-semibold sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 font-heading text-[1.875rem] font-semibold sm:text-[2.75rem] lg:text-[3.375rem]">
             {titleLead}{" "}
             <span className="rounded-2xl bg-brand px-4 pb-1.5 text-brand-foreground">
               {titleHighlight}

@@ -38,7 +38,7 @@ export function WordsBand() {
     <>
       {marqueeWords.map((word) => (
         <span key={word} className="flex items-center">
-          <span className="px-7 font-heading text-5xl font-extrabold tracking-tight sm:px-12 sm:text-7xl lg:text-8xl">
+          <span className="px-7 font-heading text-[2.625rem] font-extrabold tracking-tight sm:px-12 sm:text-[3.75rem] lg:text-[4.75rem]">
             {word}
           </span>
           <Sparkle className="h-6 w-6 shrink-0 text-brand sm:h-9 sm:w-9" />
@@ -48,7 +48,7 @@ export function WordsBand() {
   );
 
   return (
-    <section className="py-16 sm:py-20">
+    <section className="py-14 sm:py-16">
       <Track duration="34s">{sequence}</Track>
       <div className="mx-auto mt-12 flex max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-10">
         <span className="h-px flex-1 bg-white/15" />

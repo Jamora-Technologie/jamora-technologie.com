@@ -26,7 +26,7 @@ function StatItem({
       transition={{ duration: 0.6, ease: easeOutExpo, delay: index * 0.08 }}
       className="flex flex-col items-center gap-1.5 px-4 py-7 text-center sm:py-9"
     >
-      <p className="font-heading text-4xl font-semibold text-white sm:text-5xl">
+      <p className="font-heading text-[1.875rem] font-semibold text-white sm:text-[2.375rem]">
         <span ref={ref}>{current}</span>
         <span className="text-brand">{suffix}</span>
       </p>

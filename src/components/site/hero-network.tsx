@@ -187,7 +187,7 @@ export function HeroNetwork() {
   return (
     <>
       <Reseau d={COMPACT} className="max-w-sm md:hidden" />
-      <Reseau d={LARGE} className="hidden max-w-5xl md:block" />
+      <Reseau d={LARGE} className="hidden max-w-4xl md:block" />
     </>
   );
 }

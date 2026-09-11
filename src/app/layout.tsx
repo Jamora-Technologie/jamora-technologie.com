@@ -20,11 +20,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Jamora Technologie - Agence créative & digitale",
+  title: "Jamora Technologie - Ingénierie logicielle & IA",
   description:
     "Du développement web au branding, Jamora Technologie conçoit des stratégies innovantes qui font grandir votre marque.",
   openGraph: {
-    title: "Jamora Technologie - Agence créative & digitale",
+    title: "Jamora Technologie - Ingénierie logicielle & IA",
     description:
       "Du développement web au branding, nous transformons vos idées en expériences digitales remarquables.",
     type: "website",

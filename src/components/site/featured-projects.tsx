@@ -29,7 +29,7 @@ export function FeaturedProjects() {
 
         <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
           <Reveal delay={0.05}>
-            <h2 className="font-heading text-4xl font-semibold sm:text-5xl lg:text-[3.25rem]">
+            <h2 className="font-heading text-[1.875rem] font-semibold sm:text-[2.375rem] lg:text-[2.875rem]">
               {homeProjects.titleLead}{" "}
               <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
                 {homeProjects.titleHighlight}
