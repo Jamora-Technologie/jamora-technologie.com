@@ -49,7 +49,7 @@ cPanel → **Langages** → **NodeJS** → *Setup Node.js App* → **Create Appl
 
 | Champ | Valeur |
 | --- | --- |
-| Node.js version | **22** (minimum 20.9) |
+| Node.js version | **24** — la LTS disponible chez o2switch (minimum requis : 20.9) |
 | Application mode | **Production** |
 | Application root | `jamora-technologie` |
 | Application URL | `jamora-technologie.com` (racine du domaine) |
@@ -67,7 +67,7 @@ cPanel affiche, en haut de la fiche de l'application, une commande
 Copiez-la, puis :
 
 ```bash
-source ~/nodevenv/jamora-technologie/22/bin/activate
+source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
 npm install
 npm run build
@@ -95,7 +95,7 @@ Le site répond alors sur `https://jamora-technologie.com`.
 ## 6. Déployer une mise à jour
 
 ```bash
-source ~/nodevenv/jamora-technologie/22/bin/activate
+source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
 git pull
 npm install
@@ -117,4 +117,5 @@ garde le code en mémoire.
 - **`allowedDevOrigins`** dans [`next.config.ts`](next.config.ts) ne sert
   qu'au développement en réseau local ; il est sans effet en production.
 - **Après un changement de version de Node** dans cPanel, relancez
-  `npm install` : les binaires natifs sont liés à la version.
+  `npm install` : les binaires natifs sont liés à la version. Le chemin
+  d'activation change aussi, `.../nodevenv/jamora-technologie/<version>/...`.
