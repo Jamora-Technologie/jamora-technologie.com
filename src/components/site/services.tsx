@@ -1,42 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services, servicesIntro } from "@/lib/content";
 import { Reveal, easeOutExpo } from "@/components/motion/reveal";
-
-/** Texte disposé en cercle autour de la photo centrale, en rotation lente. */
-function CircularLabel() {
-  const text = "JAMORA TECHNOLOGIE • DESIGN • DIGITAL • ";
-  return (
-    <svg
-      viewBox="0 0 200 200"
-      className="h-32 w-32 animate-spin-slow text-ink drop-shadow"
-      aria-hidden
-    >
-      <defs>
-        <path
-          id="circle-path"
-          d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"
-          fill="none"
-        />
-      </defs>
-      <text className="text-[13px] font-semibold uppercase tracking-[0.12em]">
-        {/* textLength force le mot à couvrir exactement la circonférence :
-            sans lui, le texte se chevauche à la jonction du cercle. */}
-        <textPath
-          href="#circle-path"
-          fill="currentColor"
-          textLength={2 * Math.PI * 72}
-          lengthAdjust="spacing"
-        >
-          {text}
-        </textPath>
-      </text>
-    </svg>
-  );
-}
+import { ServicesDiagram } from "@/components/site/services-diagram";
 
 function ServiceRow({
   id,
@@ -114,21 +82,9 @@ export function Services() {
               </div>
             </div>
 
-            {/* Colonne 2 : visuel avec label circulaire */}
-            <Reveal delay={0.1} className="relative h-full">
-              <div className="relative h-full min-h-[260px] overflow-hidden rounded-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
-                  alt="Session de travail créative chez Jamora Technologie"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover grayscale"
-                />
-                <div className="absolute inset-0 bg-ink/20" />
-                <div className="absolute right-2 top-3 grid place-items-center">
-                  <CircularLabel />
-                </div>
-              </div>
+            {/* Colonne 2 : schéma d'architecture de la plateforme */}
+            <Reveal delay={0.1} className="flex h-full items-center">
+              <ServicesDiagram />
             </Reveal>
 
           </div>

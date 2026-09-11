@@ -189,3 +189,16 @@
     );
   }
 }
+
+/* Les animations déclarées en CSS échappent à Framer Motion : la
+   préférence système doit donc être honorée ici aussi. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-signal,
+  .animate-shimmer,
+  .animate-breathe,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+}

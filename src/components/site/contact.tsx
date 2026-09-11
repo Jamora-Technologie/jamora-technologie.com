@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { contact } from "@/lib/content";
 import { Reveal } from "@/components/motion/reveal";
 import { Sparkle } from "@/components/site/decor";
 
 export function Contact() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -48,7 +47,7 @@ export function Contact() {
                   réduire les animations.
                 */}
                 <motion.span
-                  animate={reduceMotion ? undefined : { x: [0, 5, 0] }}
+                  animate={{ x: [0, 5, 0] }}
                   transition={{
                     duration: 1.4,
                     repeat: Infinity,

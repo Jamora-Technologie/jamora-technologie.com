@@ -2,7 +2,6 @@
 
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
   type Variants,
@@ -158,11 +157,10 @@ export function Parallax({
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [distance / 2, -distance / 2]);
-  const reduceMotion = useReducedMotion();
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={reduceMotion ? undefined : { y }} className="h-full">
+      <motion.div style={{ y }} className="h-full">
         {children}
       </motion.div>
     </div>
