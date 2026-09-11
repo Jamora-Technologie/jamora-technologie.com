@@ -10,7 +10,7 @@ import { Reveal } from "@/components/motion/reveal";
  */
 export function Press() {
   return (
-    <section id="presse" className="scroll-mt-32 px-4 pb-24 sm:px-6 lg:px-10">
+    <section id="presse" className="scroll-mt-32 px-4 pb-24 pt-20 sm:px-6 sm:pt-24 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
