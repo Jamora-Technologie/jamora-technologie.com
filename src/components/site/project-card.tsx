@@ -35,6 +35,11 @@ export function ProjectCard({
         les rend tous lisibles de la même façon, quel que soit le futur logo.
       */}
       <div className="relative grid min-h-[220px] place-items-center overflow-hidden bg-white p-8 md:min-h-[280px]">
+        {/* Liseré dans la couleur du projet, sur l'arête commune aux deux volets */}
+        <span
+          className="absolute inset-x-0 bottom-0 h-1 md:inset-y-0 md:left-auto md:right-0 md:h-auto md:w-1"
+          style={{ backgroundColor: project.accent }}
+        />
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -68,9 +73,23 @@ export function ProjectCard({
       <div className="flex flex-col justify-between gap-6 p-7 sm:p-9">
         <div>
           <div className="flex flex-wrap items-center gap-3">
+            <span className="font-heading text-sm font-semibold text-white/35">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <h2 className="font-heading text-2xl font-semibold sm:text-3xl">
               {project.name}
             </h2>
+            {/* État du projet : un point coloré vaut mieux qu'un mot de plus */}
+            <span
+              className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide"
+              style={{ color: isLive ? "#a3e635" : "rgba(255,255,255,0.45)" }}
+            >
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: isLive ? "#a3e635" : "rgba(255,255,255,0.45)" }}
+              />
+              {isLive ? "En production" : "En cours"}
+            </span>
             {project.year && (
               <span className="text-sm text-white/40">{project.year}</span>
             )}

@@ -252,7 +252,7 @@ export const projects: Project[] = [
   {
     slug: "dara-j-food",
     name: "Dara-J-Food",
-    tags: ["Restauration", "En cours"],
+    tags: ["Restauration"],
     description:
       "Dara-J-Food est une solution sénégalaise de digitalisation de la restauration qui simplifie et modernise la gestion des commandes en restaurant. De la prise de commande à la cuisine, en passant par la caisse, Dara-J-Food connecte chaque étape en temps réel afin de réduire les erreurs, accélérer le service et améliorer l'expérience client.",
     href: null,
@@ -281,6 +281,21 @@ export const projectsPage = {
     "Chaque projet part d'un besoin concret et se termine par une plateforme en production. Voici ce que nous avons construit.",
   cta: "Voir le projet",
   ctaWip: "Projet en cours - lien à venir",
+  /* Résumé affiché sous l'en-tête. Les deux premiers chiffres sont
+     dérivés des données, seul le troisième libellé est éditorial. */
+  resume: {
+    projets: "Produits conçus",
+    production: "En production",
+    secteursLabel: "Secteurs couverts",
+    secteurs: "Santé · Restauration",
+  },
+  /* Bloc de clôture, en bas de page. */
+  fin: {
+    titre: "Votre projet a sa place ici",
+    body:
+      "Nous concevons peu de produits, mais nous les menons jusqu'à la mise en production. Si votre besoin est concret, parlons-en.",
+    cta: "Nous écrire",
+  },
 };
 
 /** Bulle de signature affichée juste au-dessus du footer, sur toutes les pages. */
