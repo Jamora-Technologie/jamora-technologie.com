@@ -38,6 +38,16 @@ cd ~
 git clone https://github.com/Jamora-Technologie/jamora-technologie.com.git jamora-technologie
 ```
 
+Si cPanel a déjà créé le dossier de l'application, `git clone` refusera
+d'écrire dedans. Passez alors par un dossier intermédiaire :
+
+```bash
+cd ~
+git clone https://github.com/Jamora-Technologie/jamora-technologie.com.git jamora-tmp
+cp -a jamora-tmp/. jamora-technologie/
+rm -rf jamora-tmp
+```
+
 Le dossier est à la racine de l'hébergement, **en dehors de
 `public_html`** — c'est ce qu'attend o2switch pour le code source.
 
@@ -69,12 +79,15 @@ Copiez-la, puis :
 ```bash
 source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
-npm install
+npm install --include=dev
 npm run build
 ```
 
-`npm install` complet, sans `--omit=dev` : Tailwind et TypeScript sont en
-`devDependencies` et sont nécessaires au build.
+**`--include=dev` n'est pas optionnel.** Le mode « Production » de cPanel
+exporte `NODE_ENV=production`, que npm interprète comme un `--omit=dev`
+implicite. Or Tailwind et TypeScript sont en `devDependencies` et servent
+au build : sans ce drapeau, `npm run build` échoue sur un module
+introuvable.
 
 Si le build manque de mémoire :
 
@@ -98,7 +111,7 @@ Le site répond alors sur `https://jamora-technologie.com`.
 source ~/nodevenv/jamora-technologie/24/bin/activate
 cd ~/jamora-technologie
 git pull
-npm install
+npm install --include=dev
 npm run build
 ```
 
