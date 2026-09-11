@@ -34,7 +34,7 @@ export function ProjectCard({
         hétérogènes (l'un transparent, l'autre blanc opaque). Une surface claire
         les rend tous lisibles de la même façon, quel que soit le futur logo.
       */}
-      <div className="relative grid min-h-[220px] place-items-center overflow-hidden bg-white p-8 md:min-h-[280px]">
+      <div className="relative grid min-h-[220px] place-items-center overflow-hidden bg-white p-6 md:min-h-[280px]">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -52,7 +52,7 @@ export function ProjectCard({
               logos sans retoucher les fichiers, et ne change rien à ceux
               qui sont déjà transparents.
             */
-            className="relative max-h-[200px] w-auto max-w-[320px] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
+            className="relative w-full max-w-[240px] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105 sm:max-w-[340px]"
           />
         ) : (
           <span
