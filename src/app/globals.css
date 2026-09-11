@@ -145,7 +145,8 @@
   }
   html {
     @apply font-sans;
-    scroll-behavior: smooth;
+    /* Lenis pilote le défilement : le lissage natif entrerait en conflit
+       avec son animation. */
     /* Contenu jamais plus large que l'écran, sans faire du <body> un
        conteneur de défilement (ce qui casserait window.scrollY). */
     overflow-x: hidden;

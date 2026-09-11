@@ -6,7 +6,12 @@ import { Star } from "lucide-react";
 import { hero } from "@/lib/content";
 import { Burst, Leaf } from "@/components/site/decor";
 import { HeroNetwork } from "@/components/site/hero-network";
-import { fadeUp, staggerParent } from "@/components/motion/reveal";
+import {
+  Parallax,
+  WordReveal,
+  fadeUp,
+  staggerParent,
+} from "@/components/motion/reveal";
 
 export function Hero() {
   return (
@@ -25,8 +30,9 @@ export function Hero() {
             variants={fadeUp}
             className="mx-auto max-w-4xl text-balance text-center font-heading text-[2.25rem] font-semibold leading-[1.05] sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
           >
-            {hero.titleLines[0]}
-            <br className="hidden sm:block" /> {hero.titleLines[1]}
+            <WordReveal text={hero.titleLines[0]} />
+            <br className="hidden sm:block" />{" "}
+            <WordReveal text={hero.titleLines[1]} delay={0.18} />
           </motion.h1>
 
           <motion.p
@@ -59,7 +65,9 @@ export function Hero() {
 
           {/* Le réseau : la marque au centre, expertises et applications autour */}
           <motion.div variants={fadeUp} className="mt-6 sm:mt-8">
-            <HeroNetwork />
+            <Parallax distance={60}>
+              <HeroNetwork />
+            </Parallax>
           </motion.div>
 
           <motion.div

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Signature } from "@/components/site/signature";
 import { Footer } from "@/components/site/footer";
 
@@ -44,6 +46,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript>
           <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
+        <SmoothScroll />
+        <ScrollProgress />
         <Navbar />
         {children}
         <Signature />

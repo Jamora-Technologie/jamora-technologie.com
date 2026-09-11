@@ -1,7 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "framer-motion";
+import { useRef, type ReactNode } from "react";
 
 /**
  * Courbe d'accélération commune à toutes les entrées du site.
@@ -74,5 +80,91 @@ export function RevealGroup({
     >
       {children}
     </motion.div>
+  );
+}
+
+/**
+ * Révèle un titre mot par mot : chaque mot monte, se défloute et
+ * s'opacifie, avec un léger décalage. Plus vivant qu'un fondu global,
+ * et le texte reste un seul bloc lisible pour les lecteurs d'écran.
+ */
+export function WordReveal({
+  text,
+  className,
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+}) {
+  const mots = text.split(" ");
+
+  return (
+    <motion.span
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ staggerChildren: 0.055, delayChildren: delay }}
+      aria-label={text}
+    >
+      {mots.map((mot, index) => (
+        <span
+          key={`${mot}-${index}`}
+          /* `inline-block` sur un conteneur par mot : l'animation porte sur
+             la boîte, et les retours à la ligne restent naturels. */
+          className="inline-block overflow-hidden align-bottom"
+          aria-hidden
+        >
+          <motion.span
+            className="inline-block"
+            variants={{
+              hidden: { y: "0.9em", opacity: 0, filter: "blur(8px)" },
+              visible: {
+                y: 0,
+                opacity: 1,
+                filter: "blur(0px)",
+                transition: { duration: 0.75, ease: easeOutExpo },
+              },
+            }}
+          >
+            {mot}
+          </motion.span>
+          {index < mots.length - 1 && <span>&nbsp;</span>}
+        </span>
+      ))}
+    </motion.span>
+  );
+}
+
+/**
+ * Déplace son contenu à contre-courant du défilement.
+ * `distance` est l'amplitude totale en pixels, du haut au bas de la course.
+ */
+export function Parallax({
+  children,
+  className,
+  distance = 80,
+}: {
+  children: ReactNode;
+  className?: string;
+  distance?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    /* La course commence quand le haut de l'élément touche le bas de
+       l'écran et s'achève quand son bas touche le haut. */
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [distance / 2, -distance / 2]);
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={reduceMotion ? undefined : { y }} className="h-full">
+        {children}
+      </motion.div>
+    </div>
   );
 }

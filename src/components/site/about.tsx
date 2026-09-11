@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { about } from "@/lib/content";
-import { Reveal } from "@/components/motion/reveal";
+import { Reveal, WordReveal } from "@/components/motion/reveal";
 import { Sparkle } from "@/components/site/decor";
 
 export function About() {
@@ -79,9 +79,9 @@ export function About() {
           <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
             <Reveal delay={0.08}>
               <h2 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.5rem]">
-                {about.title[0]}
+                <WordReveal text={about.title[0]} />
                 <br />
-                {about.title[1]}
+                <WordReveal text={about.title[1]} delay={0.15} />
               </h2>
             </Reveal>
             <Reveal delay={0.16}>
