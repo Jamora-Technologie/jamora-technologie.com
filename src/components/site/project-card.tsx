@@ -52,7 +52,7 @@ export function ProjectCard({
               logos sans retoucher les fichiers, et ne change rien à ceux
               qui sont déjà transparents.
             */
-            className="relative w-full max-w-[240px] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105 sm:max-w-[340px]"
+            className="relative w-full max-w-[240px] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105 sm:max-w-[322px]"
           />
         ) : (
           <span
