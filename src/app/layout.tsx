@@ -4,9 +4,9 @@ import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
-import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Signature } from "@/components/site/signature";
 import { Footer } from "@/components/site/footer";
+import { ScrollToTop } from "@/components/site/scroll-to-top";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -49,11 +49,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         <MotionProvider>
           <SmoothScroll />
-          <ScrollProgress />
           <Navbar />
           {children}
           <Signature />
           <Footer />
+          <ScrollToTop />
         </MotionProvider>
       </body>
     </html>

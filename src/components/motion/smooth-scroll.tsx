@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { enregistrerLenis } from "@/components/motion/lenis-instance";
 
 /**
  * Défilement fluide sur l'ensemble du site.
@@ -23,6 +24,8 @@ export function SmoothScroll() {
       easing: (t) => 1 - Math.pow(1 - t, 3),
       touchMultiplier: 1.6,
     });
+
+    enregistrerLenis(lenis);
 
     let frame = requestAnimationFrame(function boucle(temps) {
       lenis.raf(temps);
@@ -77,6 +80,7 @@ export function SmoothScroll() {
       document.removeEventListener("click", surClic, { capture: true });
       cancelAnimationFrame(frame);
       lenis.destroy();
+      enregistrerLenis(null);
     };
   }, []);
 
