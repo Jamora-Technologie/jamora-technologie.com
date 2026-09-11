@@ -44,25 +44,25 @@ export function ScrollToTop() {
           transition={{ duration: 0.35, ease: easeOutExpo }}
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.94 }}
-          className="group fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-ink/85 ring-1 ring-white/10 backdrop-blur-xl sm:bottom-10 sm:right-10"
+          className="group fixed bottom-6 right-6 z-50 grid h-11 w-11 place-items-center rounded-full bg-ink/85 ring-1 ring-white/10 backdrop-blur-xl sm:bottom-10 sm:right-10"
         >
           {/* Halo qui s'allume au survol */}
           <span className="absolute inset-0 rounded-full bg-brand/25 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
           <svg
-            viewBox="0 0 56 56"
+            viewBox="0 0 44 44"
             className="absolute inset-0 h-full w-full -rotate-90"
             fill="none"
             aria-hidden
           >
             {/* Rail de l'anneau */}
             <circle
-              cx="28"
-              cy="28"
-              r="25"
+              cx="22"
+              cy="22"
+              r="20"
               stroke="#ffffff"
               strokeOpacity={0.14}
-              strokeWidth="2.5"
+              strokeWidth="2"
             />
             {/*
               `pathLength` normalise la longueur du tracé à 1 : la valeur
@@ -70,17 +70,17 @@ export function ScrollToTop() {
               calcul de circonférence.
             */}
             <motion.circle
-              cx="28"
-              cy="28"
-              r="25"
+              cx="22"
+              cy="22"
+              r="20"
               stroke="#a3e635"
-              strokeWidth="2.5"
+              strokeWidth="2"
               strokeLinecap="round"
               style={{ pathLength: avancement }}
             />
           </svg>
 
-          <ChevronUp className="relative h-5 w-5 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-brand" />
+          <ChevronUp className="relative h-4 w-4 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-brand" />
         </motion.button>
       )}
     </AnimatePresence>
