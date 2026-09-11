@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { contactPage } from "@/lib/content";
+import { contactPage, seo } from "@/lib/content";
 import { PageHeader } from "@/components/site/page-header";
 import { ContactForm } from "@/components/site/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact - Jamora Technologie",
-  description:
-    "Parlez-nous de votre projet. Nous revenons vers vous sous 48 heures.",
+  /* Le gabarit du layout ajoute « - Jamora Technologie ». */
+  title: "Contact",
+  description: seo.pages.contact.description,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: seo.pages.contact.titre,
+    description: seo.pages.contact.description,
+    url: `${seo.siteUrl}/contact`,
+  },
 };
 
 export default function ContactPage() {

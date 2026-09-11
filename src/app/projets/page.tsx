@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
-import { projects, projectsPage } from "@/lib/content";
+import { projects, projectsPage, seo } from "@/lib/content";
 import { PageHeader } from "@/components/site/page-header";
 import { ProjectCard } from "@/components/site/project-card";
+import { ProductsData } from "@/components/site/products-data";
 
 export const metadata: Metadata = {
-  title: "Projets - Jamora Technologie",
-  description:
-    "Les réalisations de Jamora Technologie : produits digitaux conçus et livrés pour des besoins concrets.",
+  /* Le gabarit du layout ajoute « - Jamora Technologie ». */
+  title: seo.pages.projets.titre,
+  description: seo.pages.projets.description,
+  alternates: { canonical: "/projets" },
+  openGraph: {
+    title: seo.pages.projets.titre,
+    description: seo.pages.projets.description,
+    url: `${seo.siteUrl}/projets`,
+  },
 };
 
 export default function ProjetsPage() {
   return (
     <main className="flex-1">
+      <ProductsData />
       <PageHeader
         eyebrow={projectsPage.eyebrow}
         titleLead={projectsPage.titleLead}

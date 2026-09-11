@@ -23,11 +23,13 @@ export function ProjectCard({
 
   return (
     <motion.article
+      /* Permet un lien profond : /projets#sendon */
+      id={project.slug}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.65, ease: easeOutExpo, delay: index * 0.08 }}
-      className="group grid overflow-hidden rounded-[2rem] bg-[#0d0d0d] ring-1 ring-white/10 transition-colors hover:ring-brand/40 md:grid-cols-[minmax(240px,0.9fr)_1.6fr]"
+      className="group grid scroll-mt-32 overflow-hidden rounded-[2rem] bg-[#0d0d0d] ring-1 ring-white/10 transition-colors hover:ring-brand/40 md:grid-cols-[minmax(240px,0.9fr)_1.6fr]"
     >
       {/*
         Volet logo sur fond clair : les logos fournis arrivent avec des fonds

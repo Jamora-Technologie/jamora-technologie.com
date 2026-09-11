@@ -23,6 +23,78 @@ export const brand = {
   location: "Dakar, Sénégal",
 };
 
+/**
+ * Paramètres de référencement.
+ *
+ * `siteUrl` sert de base à toutes les URL absolues : canoniques,
+ * aperçus sociaux, sitemap. Une seule source, donc aucun risque de
+ * divergence entre ces trois usages.
+ */
+export const seo = {
+  siteUrl: "https://jamora-technologie.com",
+  titre: "Jamora Technologie - Ingénierie logicielle & IA",
+  /* 155 caractères au plus : au-delà, Google tronque dans ses résultats. */
+  description:
+    "Studio d'ingénierie logicielle à Dakar. Intelligence artificielle, développement web et mobile, design UI/UX : des plateformes conçues pour durer.",
+  motsCles: [
+    "ingénierie logicielle Sénégal",
+    "développement web Dakar",
+    "développement mobile Sénégal",
+    "intelligence artificielle Sénégal",
+    "startup tech Dakar",
+    "design UI UX Sénégal",
+    "Jamora Technologie",
+    "SenDon",
+  ],
+  pages: {
+    projets: {
+      /* Le nom des produits dans le titre : c'est le signal le plus fort
+         pour apparaître sur une recherche « SenDon ». */
+      titre: "Nos projets : SenDon & Dara-J-Food",
+      description:
+        "SenDon, plateforme nationale e-santé du don de sang, et Dara-J-Food, digitalisation de la restauration. Les produits conçus par Jamora Technologie.",
+    },
+    contact: {
+      titre: "Contact - Jamora Technologie",
+      description:
+        "Un système à concevoir ou une base technique à reprendre ? Écrivez à l'équipe de Jamora Technologie, à Dakar. Réponse sous 48 heures ouvrées.",
+    },
+  },
+};
+
+/**
+ * Retombées presse. Elles alimentent à la fois la section « Ils parlent
+ * de nous » et les données structurées de l'organisation : Google y voit
+ * un signal de notoriété adossé à des sources tierces.
+ */
+export const presse = [
+  {
+    media: "We Are Tech Africa",
+    titre:
+      "Sénégal : Sendon connecte les donneurs de sang et les hôpitaux en cas d'urgence",
+    auteur: "Adoni Conrad Quenum",
+    projet: "sendon",
+    date: "2026-05-04",
+    dateLisible: "4 mai 2026",
+    url: "https://www.wearetech.africa/fr/fils/solutions/senegal-sendon-connecte-les-donneurs-de-sang-et-les-hopitaux-en-cas-d-urgence",
+  },
+  {
+    media: "Seneweb",
+    titre: "Innovation : Une startup sénégalaise révolutionne le don de sang",
+    auteur: "Moustapha Toumbou",
+    projet: "sendon",
+    date: "2026-04-10",
+    dateLisible: "10 avril 2026",
+    url: "https://www.seneweb.com/fr/news/Technologie/innovation-une-startup-senegalaise-revolutionne-le-don-de-sang_n_489161.html",
+  },
+] as const;
+
+export const pressePage = {
+  eyebrow: "ILS PARLENT DE NOUS",
+  titreLead: "Dans la",
+  titreHighlight: "presse",
+};
+
 export const navLinks = [
   { label: "À propos", href: "/#a-propos" },
   { label: "Services", href: "/#services" },
@@ -123,7 +195,7 @@ export const team = {
     {
       slug: "cheikh-mbacke-coly",
       name: "Cheikh Mbacké Coly",
-      role: "CEO & Co-Founder",
+      role: "Président & CEO, Co-Fondateur",
       title: "Ingénieur Logiciel",
       bio: "Ingénieur logiciel orienté produit et expérience utilisateur, il pilote le développement des solutions web et mobiles de Jamora Technologie. Il transforme les idées en produits concrets, intuitifs et accessibles, avec une attention particulière portée à l'expérience utilisateur.",
       linkedin: "https://www.linkedin.com/in/cheikh-mbacke-coly-26047127b/",
@@ -132,7 +204,7 @@ export const team = {
     {
       slug: "ousmane-ndieguene",
       name: "Ousmane Ndiéguène",
-      role: "CPO & Co-Founder",
+      role: "Directeur Général & CPO, Co-Fondateur",
       title: "Ingénieur IA & SmartTech",
       bio: "Ingénieur spécialisé en intelligence artificielle et technologies intelligentes, il pilote la vision produit et contribue à la conception de l'architecture IA de SenDon. Il veille à transformer les besoins métiers en solutions innovantes, pertinentes et évolutives.",
       linkedin: "https://www.linkedin.com/in/mirfou111",
@@ -141,7 +213,7 @@ export const team = {
     {
       slug: "mouhamet-diagne",
       name: "Mouhamet Diagne",
-      role: "CTO & Co-Founder",
+      role: "CTO & Co-Fondateur",
       title: "Ingénieur Logiciel",
       bio: "Ingénieur logiciel, il définit et supervise l'architecture technique ainsi que l'infrastructure des solutions de Jamora Technologie. Il garantit la robustesse, la scalabilité et la fiabilité des systèmes développés.",
       linkedin: "https://www.linkedin.com/in/mouhamet-diagne-394957320/",
@@ -150,7 +222,7 @@ export const team = {
     {
       slug: "yaye-fatimatou-tall",
       name: "Yaye Fatimatou Tall",
-      role: "CXO & Co-Founder",
+      role: "CXO & Co-Fondatrice",
       title: "Medical & Digital Strategy Manager",
       bio: "Spécialisée en médecine, stratégie digitale et communication, elle pilote l'expérience utilisateur (UX) et veille à la cohérence des orientations médicales des solutions. Elle contribue également à la définition des stratégies digitales et de communication de Jamora Technologie et de ses différents projets.",
       linkedin: "https://www.linkedin.com/in/yaye-fatimatou-tall-b51bab2b4",
@@ -159,7 +231,7 @@ export const team = {
     {
       slug: "daouda-dieng",
       name: "Daouda Dieng",
-      role: "CDO & Co-Founder",
+      role: "CDO & Co-Fondateur",
       title: "Ingénieur en Sciences des Données",
       bio: "Ingénieur en sciences des données, il conçoit et exploite les solutions de valorisation des données de Jamora Technologie. Il contribue à transformer les données en informations utiles pour soutenir la prise de décision, l'intelligence produit et l'innovation.",
       linkedin: "https://www.linkedin.com/in/daouda-dieng-14106b285",
@@ -229,6 +301,8 @@ export type Project = {
   href: string | null;
   logo: StaticImageData | null;
   initials: string;
+  /** Catégorie schema.org du produit (applicationCategory). */
+  categorie: string;
   accent: string;
   status: "live" | "wip";
   featured: boolean;
@@ -246,6 +320,7 @@ export const projects: Project[] = [
     logo: logoSendon,
     initials: "SD",
     accent: "#e5484d",
+    categorie: "HealthApplication",
     status: "live",
     featured: true,
   },
@@ -259,6 +334,7 @@ export const projects: Project[] = [
     logo: logoDaraJFood,
     initials: "DJ",
     accent: "#d98430",
+    categorie: "BusinessApplication",
     status: "wip",
     featured: false,
   },
@@ -278,7 +354,7 @@ export const projectsPage = {
   titleLead: "Nos",
   titleHighlight: "Projets",
   body:
-    "Chaque projet part d'un besoin concret et se termine par une plateforme en production. Voici ce que nous avons construit.",
+    "Chaque projet part d'un besoin concret et se termine par une plateforme en production. SenDon pour le don de sang, Dara-J-Food pour la restauration : voici ce que nous avons construit.",
   cta: "Voir le projet",
   ctaWip: "Projet en cours - lien à venir",
 };
