@@ -6,6 +6,8 @@ import photoOusmane from "@/assets/img/teams/ousmane.jpeg";
 import photoDiagne from "@/assets/img/teams/diagne.jpeg";
 import photoYaye from "@/assets/img/teams/yaye.jpeg";
 import photoDaouda from "@/assets/img/teams/daouda.jpeg";
+import logoSeneweb from "@/assets/img/media/seneweb-logo.webp";
+import logoWeAreTech from "@/assets/img/media/wearetech-logo.webp";
 
 /**
  * Contenu éditorial du site. Tout le texte vit ici pour qu'une relecture
@@ -70,6 +72,10 @@ export const seo = {
 export const presse = [
   {
     media: "We Are Tech Africa",
+    logo: logoWeAreTech,
+    /* Presque carré (121x131) : on le laisse monter pour compenser sa
+       faible emprise horizontale. */
+    logoClasse: "h-9",
     titre:
       "Sénégal : Sendon connecte les donneurs de sang et les hôpitaux en cas d'urgence",
     auteur: "Adoni Conrad Quenum",
@@ -80,6 +86,10 @@ export const presse = [
   },
   {
     media: "Seneweb",
+    logo: logoSeneweb,
+    /* Logotype large (242x66) : bridé en hauteur, sans quoi il écraserait
+       la plaque et le reste de la carte. */
+    logoClasse: "h-5",
     titre: "Innovation : Une startup sénégalaise révolutionne le don de sang",
     auteur: "Moustapha Toumbou",
     projet: "sendon",

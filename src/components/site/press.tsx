@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { presse, pressePage } from "@/lib/content";
 import { Reveal } from "@/components/motion/reveal";
+import { cn } from "@/lib/utils";
 
 /**
  * Retombées presse. Les liens sortants vers des médias reconnus sont un
@@ -38,13 +40,25 @@ export function Press() {
                 className="group flex h-full flex-col justify-between gap-6 rounded-3xl border border-white/12 bg-white/[0.03] p-7 transition-colors hover:border-brand/50 hover:bg-brand/[0.06]"
               >
                 <div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <span className="font-heading font-semibold text-brand">
-                      {article.media}
+                  <div className="flex items-center justify-between gap-3">
+                    {/* Plaque blanche obligatoire : l'un des logos est une
+                        encre sombre détourée, l'autre arrive avec son propre
+                        fond blanc. Le même socle les réconcilie. */}
+                    <span className="inline-flex h-12 shrink-0 items-center rounded-xl bg-white px-3 ring-1 ring-transparent transition-[box-shadow] group-hover:ring-brand/40">
+                      <Image
+                        src={article.logo}
+                        alt={article.media}
+                        /* Servis tels quels : à 3,5 ko et déjà 3x la densité
+                           d'affichage, l'optimiseur ne gagne rien et retombe
+                           en JPEG si le client ne négocie pas le WebP, ce qui
+                           aplatirait l'alpha du logo Seneweb sur du noir. */
+                        unoptimized
+                        className={cn("w-auto object-contain", article.logoClasse)}
+                      />
                     </span>
-                    <span className="text-white/35">{article.dateLisible}</span>
+                    <span className="text-sm text-white/35">{article.dateLisible}</span>
                   </div>
-                  <p className="mt-4 font-heading text-lg font-medium leading-snug text-white sm:text-xl">
+                  <p className="mt-5 font-heading text-lg font-medium leading-snug text-white sm:text-xl">
                     {article.titre}
                   </p>
                 </div>
