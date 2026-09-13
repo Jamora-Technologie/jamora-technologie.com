@@ -44,6 +44,7 @@ export const seo = {
     "développement mobile Sénégal",
     "intelligence artificielle Sénégal",
     "startup tech Dakar",
+    "ingénierie de données Sénégal",
     "design UI UX Sénégal",
     "Jamora Technologie",
     "SenDon",
@@ -150,9 +151,9 @@ export const services = [
   },
   {
     id: "02",
-    title: "Développement Web",
+    title: "Développement Web et Logiciel",
     description:
-      "Plateformes web bâties sur des architectures modernes : découpage clair, tests automatisés et montée en charge maîtrisée.",
+      "Plateformes web et logiciels métiers bâtis sur des architectures modernes : découpage clair, tests automatisés et montée en charge maîtrisée.",
   },
   {
     id: "03",
@@ -162,12 +163,18 @@ export const services = [
   },
   {
     id: "04",
+    title: "Ingénierie de données",
+    description:
+      "Collecte, pipelines et entrepôts de données fiables : la matière première des modèles et des tableaux de bord, gouvernée de bout en bout.",
+  },
+  {
+    id: "05",
     title: "Design UI/UX",
     description:
       "Interfaces claires et accessibles, design systems cohérents, parcours validés par la recherche utilisateur avant la première ligne de code.",
   },
   {
-    id: "05",
+    id: "06",
     title: "Solutions sur mesure",
     description:
       "Systèmes métiers conçus pour votre organisation : intégrations, automatisations et outils internes qui s'ancrent dans vos processus existants.",
@@ -179,7 +186,7 @@ export const servicesIntro = {
   titleLead: "Nos",
   titleHighlight: "Services",
   body:
-    "Cinq expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne - c'est ce qui rend les systèmes cohérents.",
+    "Six expertises complémentaires, mobilisées ensemble sur chaque projet. De l'architecture au pixel, nous couvrons toute la chaîne - c'est ce qui rend les systèmes cohérents.",
 };
 
 export const marqueeWords = ["Concevoir", "Architecturer", "Déployer"] as const;

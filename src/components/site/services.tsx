@@ -27,12 +27,16 @@ function ServiceRow({
       <a
         href="#contact"
         title={description}
-        className="group flex items-center gap-5 rounded-full border border-white/12 bg-white/[0.03] px-7 py-5 transition-colors hover:border-brand/60 hover:bg-brand/10"
+        className="group flex items-center gap-5 rounded-full border border-white/12 bg-white/[0.03] px-7 py-5 transition-colors hover:border-brand/60 hover:bg-brand/10 lg:gap-3 lg:px-5 xl:gap-5 xl:px-7"
       >
         <span className="font-heading text-base font-semibold text-brand">
           {id}
         </span>
-        <span className="flex-1 font-heading text-lg font-medium text-white sm:text-xl">
+        {/* Sur mobile la plupart des intitulés tiennent sur deux lignes :
+            on réserve cette hauteur pour tous, sinon le seul titre court
+            creuse un trou dans la colonne. 3.5rem = deux interlignes de
+            text-lg, donc la valeur suit l'échelle typographique. */}
+        <span className="min-h-14 flex-1 content-center font-heading text-lg font-medium text-white sm:min-h-0 sm:text-xl lg:text-lg xl:text-xl">
           {title}
         </span>
         <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white transition-all group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
