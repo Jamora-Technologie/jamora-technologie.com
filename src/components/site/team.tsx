@@ -92,6 +92,10 @@ function MemberCard({
             alt={member.name}
             fill
             sizes="(max-width: 1024px) 100vw, 220px"
+            /* Génère un aperçu flou depuis l'import statique, sans coût au
+               runtime : le temps que l'image nette arrive, la plaque n'est
+               plus vide mais déjà habitée. */
+            placeholder="blur"
             className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
           />
           <a

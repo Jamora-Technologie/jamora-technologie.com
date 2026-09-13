@@ -1,11 +1,11 @@
 import type { StaticImageData } from "next/image";
 import logoSendon from "@/assets/img/project/logo-sendon.jpg";
 import logoDaraJFood from "@/assets/img/project/logo-dara-j-food.jpg";
-import photoCmc from "@/assets/img/teams/cmc.png";
-import photoOusmane from "@/assets/img/teams/ousmane.jpeg";
-import photoDiagne from "@/assets/img/teams/diagne.jpeg";
-import photoYaye from "@/assets/img/teams/yaye.jpeg";
-import photoDaouda from "@/assets/img/teams/daouda.jpeg";
+import photoCmc from "@/assets/img/teams/cmc.jpg";
+import photoOusmane from "@/assets/img/teams/ousmane.jpg";
+import photoDiagne from "@/assets/img/teams/diagne.jpg";
+import photoYaye from "@/assets/img/teams/yaye.jpg";
+import photoDaouda from "@/assets/img/teams/daouda.jpg";
 import logoSeneweb from "@/assets/img/media/seneweb-logo.webp";
 import logoWeAreTech from "@/assets/img/media/wearetech-logo.webp";
 
