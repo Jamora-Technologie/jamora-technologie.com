@@ -56,6 +56,10 @@ type Disposition = {
   flux?: Point[];
   socles: Point[];
   axe: "horizontal" | "vertical";
+  /* Demi-taille des pastilles, convertie dans le repère du viewBox : c'est
+     là que les flèches doivent s'arrêter pour effleurer le bord. */
+  rayonSurface: number;
+  rayonSocle: number;
   /** Intitulé du socle à droite du cercle, ou dessous. */
   labelSocleACote: boolean;
 };
@@ -80,29 +84,35 @@ const LARGE: Disposition = {
     { x: 616, y: 442 },
   ],
   axe: "horizontal",
+  rayonSurface: 26,
+  rayonSocle: 34,
   labelSocleACote: true,
 };
 
 /*
- * Mobile : le viewBox fait 320 unités de large, soit à peu près la
- * largeur réelle du conteneur. Une unité vaut donc environ un pixel, et
- * les tuiles de 40 px occupent bien 40 unités — plus aucun chevauchement.
- * Les étiquettes de flux sont masquées, faute de place entre les colonnes.
+ * Mobile : trois bandes empilées — surfaces en haut, plateforme au centre,
+ * socles en bas. Tout s'écoule vers le bas, dans l'ordre des colonnes, donc
+ * aucune courbe n'en croise une autre. Le viewBox fait 320 unités de large
+ * pour environ 295 px réels : une unité vaut ~0,92 px, d'où des rayons de
+ * 22 (tuiles de 40 px) et 20 (cercles de 36 px).
+ * Les étiquettes de flux restent masquées, faute de place entre les colonnes.
  */
 const COMPACT: Disposition = {
-  vue: { largeur: 320, hauteur: 580 },
-  centre: { x: 160, y: 72 },
+  vue: { largeur: 320, hauteur: 440 },
+  centre: { x: 160, y: 200 },
   surfaces: [
-    { x: 58, y: 236 },
-    { x: 58, y: 360 },
-    { x: 58, y: 484 },
+    { x: 52, y: 46 },
+    { x: 160, y: 46 },
+    { x: 268, y: 46 },
   ],
   socles: [
-    { x: 262, y: 236 },
-    { x: 262, y: 360 },
-    { x: 262, y: 484 },
+    { x: 52, y: 366 },
+    { x: 160, y: 366 },
+    { x: 268, y: 366 },
   ],
   axe: "vertical",
+  rayonSurface: 22,
+  rayonSocle: 20,
   labelSocleACote: false,
 };
 
@@ -124,7 +134,7 @@ function Schema({ d, className }: { d: Disposition; className?: string }) {
   const attache = (index: number, cote: -1 | 1): Point =>
     d.axe === "horizontal"
       ? { x: d.centre.x + cote * 78, y: d.centre.y - 40 + index * 40 }
-      : { x: d.centre.x - 30 + index * 30, y: d.centre.y + 52 };
+      : { x: d.centre.x - 30 + index * 30, y: d.centre.y + cote * 52 };
 
   return (
     <div
@@ -160,8 +170,12 @@ function Schema({ d, className }: { d: Disposition; className?: string }) {
           const arrivee = attache(index, -1);
           const chemin =
             d.axe === "horizontal"
-              ? courbe({ x: depart.x + 26, y: depart.y }, arrivee, d.axe)
-              : courbe({ x: depart.x, y: depart.y - 30 }, arrivee, d.axe);
+              ? courbe({ x: depart.x + d.rayonSurface, y: depart.y }, arrivee, d.axe)
+              : courbe(
+                  { x: depart.x, y: depart.y + Math.sign(arrivee.y - depart.y) * d.rayonSurface },
+                  arrivee,
+                  d.axe,
+                );
           return (
             <g key={surface.id}>
               <path d={chemin} stroke={surface.teinte} strokeOpacity={0.55} strokeWidth={1.8} markerEnd={`url(#${idFiltre}-marque)`} />
@@ -186,8 +200,12 @@ function Schema({ d, className }: { d: Disposition; className?: string }) {
           const depart = attache(index, 1);
           const chemin =
             d.axe === "horizontal"
-              ? courbe(depart, { x: cible.x - 34, y: cible.y }, d.axe)
-              : courbe(depart, { x: cible.x, y: cible.y - 30 }, d.axe);
+              ? courbe(depart, { x: cible.x - d.rayonSocle, y: cible.y }, d.axe)
+              : courbe(
+                  depart,
+                  { x: cible.x, y: cible.y + Math.sign(depart.y - cible.y) * d.rayonSocle },
+                  d.axe,
+                );
           return (
             <path
               key={socle.id}
@@ -264,7 +282,7 @@ function Schema({ d, className }: { d: Disposition; className?: string }) {
                 "whitespace-pre-line text-[0.68rem] leading-tight text-white/55",
                 d.labelSocleACote
                   ? ""
-                  : "absolute left-1/2 top-full mt-2 w-24 -translate-x-1/2 text-center",
+                  : "absolute left-1/2 top-full mt-2 w-[5.5rem] -translate-x-1/2 text-center",
               )}
             >
               {socle.label}
