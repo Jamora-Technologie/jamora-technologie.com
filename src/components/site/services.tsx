@@ -62,28 +62,32 @@ export function Services() {
         </div>
 
         <div className="relative lg:pl-10">
-          <Reveal>
-            <h2 className="font-heading text-[1.875rem] font-semibold sm:text-[2.375rem] lg:text-[2.875rem]">
-              {servicesIntro.titleLead}{" "}
-              <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
-                {servicesIntro.titleHighlight}
-              </span>
-            </h2>
-          </Reveal>
+          {/* En-tête sur une seule ligne : titre à gauche, intro à droite.
+              Même trame que les deux colonnes du dessous, donc l'intro se
+              cale exactement sur le schéma qu'elle surplombe. `items-end`
+              pose le paragraphe sur la ligne de base du titre. */}
+          <div className="grid items-end gap-5 lg:grid-cols-[1fr_1fr] lg:gap-8">
+            <Reveal>
+              <h2 className="font-heading text-[1.875rem] font-semibold sm:text-[2.375rem] lg:text-[2.875rem]">
+                {servicesIntro.titleLead}{" "}
+                <span className="rounded-xl bg-brand px-3 pb-1 text-brand-foreground">
+                  {servicesIntro.titleHighlight}
+                </span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p className="max-w-md text-base leading-relaxed text-white/55">
+                {servicesIntro.body}
+              </p>
+            </Reveal>
+          </div>
 
           <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-[1fr_1fr] lg:gap-8">
-            {/* Colonne 1 : intro + liste des services */}
-            <div>
-              <Reveal delay={0.05}>
-                <p className="max-w-md text-base leading-relaxed text-white/55">
-                  {servicesIntro.body}
-                </p>
-              </Reveal>
-              <div className="mt-7 flex flex-col gap-3">
-                {services.map((service, index) => (
-                  <ServiceRow key={service.id} index={index} {...service} />
-                ))}
-              </div>
+            {/* Colonne 1 : liste des services */}
+            <div className="flex flex-col gap-3">
+              {services.map((service, index) => (
+                <ServiceRow key={service.id} index={index} {...service} />
+              ))}
             </div>
 
             {/* Colonne 2 : schéma d'architecture de la plateforme */}
