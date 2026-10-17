@@ -212,7 +212,7 @@ export const team = {
     {
       slug: "cheikh-mbacke-coly",
       name: "Cheikh Mbacké Coly",
-      role: "Président & CEO, Co-Fondateur",
+      role: "CEO & Co-Fondateur",
       title: "Ingénieur Logiciel",
       bio: "Ingénieur logiciel orienté produit et expérience utilisateur, il pilote le développement des solutions web et mobiles de Jamora Technologie. Il transforme les idées en produits concrets, intuitifs et accessibles, avec une attention particulière portée à l'expérience utilisateur.",
       linkedin: "https://www.linkedin.com/in/cheikh-mbacke-coly-26047127b/",
@@ -221,7 +221,7 @@ export const team = {
     {
       slug: "ousmane-ndieguene",
       name: "Ousmane Ndiéguène",
-      role: "Directeur Général & CPO, Co-Fondateur",
+      role: "CPO & Co-Fondateur",
       title: "Ingénieur IA & SmartTech",
       bio: "Ingénieur spécialisé en intelligence artificielle et technologies intelligentes, il pilote la vision produit et contribue à la conception de l'architecture IA de SenDon. Il veille à transformer les besoins métiers en solutions innovantes, pertinentes et évolutives.",
       linkedin: "https://www.linkedin.com/in/mirfou111",
