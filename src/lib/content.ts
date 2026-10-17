@@ -398,11 +398,17 @@ export const contactPage = {
   },
   submit: "Envoyer le message",
   success: "Message bien reçu. Nous vous répondons sous 48 heures.",
-  /** `href` optionnel : rend la coordonnée directement actionnable. */
-  infos: [
-    { label: "E-mail", value: brand.email, href: `mailto:${brand.email}` },
-    { label: "Téléphone", value: brand.phone, href: brand.phoneHref },
-    { label: "Localisation", value: brand.location, href: null },
-    { label: "Délai de réponse", value: "Sous 48 heures ouvrées", href: null },
-  ],
+  errors: {
+    name: "Indiquez votre nom (2 caractères minimum).",
+    email: "Cette adresse e-mail ne semble pas valide.",
+    company: "120 caractères maximum.",
+    subject: "Indiquez un sujet (3 caractères minimum).",
+    message: "Décrivez votre besoin en 10 caractères au moins.",
+    tooFast: "Envoi trop rapide : patientez un instant puis réessayez.",
+    rate: "Trop de messages envoyés depuis votre connexion. Réessayez dans une heure, ou écrivez-nous directement par e-mail.",
+    generic: "Une erreur est survenue de notre côté. Réessayez dans un instant, ou écrivez-nous directement par e-mail.",
+  },
+  /** Libellés des coordonnées ; les valeurs viennent des réglages du back-office. */
+  labels: { email: "E-mail", phone: "Téléphone", location: "Localisation" },
+  delai: { label: "Délai de réponse", value: "Sous 48 heures ouvrées" },
 };

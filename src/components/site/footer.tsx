@@ -5,6 +5,9 @@ import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { brand, footer } from "@/lib/content";
 import logoMark from "@/assets/img/logo/logo-mark.png";
+import type { ContactSettings } from "@/lib/server/settings";
+
+type FooterContact = ContactSettings & { phoneHref: string };
 
 /** Filigrane géant qui défile au pied du footer, balayé par une lueur. */
 function Filigrane() {
@@ -38,7 +41,7 @@ function Filigrane() {
   );
 }
 
-export function Footer() {
+export function Footer({ contact }: { contact: FooterContact }) {
   return (
     <footer className="relative isolate overflow-hidden">
       {/*
@@ -103,25 +106,25 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/65">
               <li>
                 <a
-                  href={`mailto:${brand.email}`}
+                  href={`mailto:${contact.email}`}
                   className="group flex items-start gap-2.5 transition-colors hover:text-white"
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="group-hover:underline">{brand.email}</span>
+                  <span className="group-hover:underline">{contact.email}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href={brand.phoneHref}
+                  href={contact.phoneHref}
                   className="group flex items-center gap-2.5 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 shrink-0" />
-                  <span className="group-hover:underline">{brand.phone}</span>
+                  <span className="group-hover:underline">{contact.phone}</span>
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <MapPin className="h-4 w-4 shrink-0" />
-                {brand.location}
+                {contact.location}
               </li>
             </ul>
           </div>

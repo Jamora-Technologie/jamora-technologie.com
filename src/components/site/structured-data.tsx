@@ -1,4 +1,5 @@
 import { brand, presse, seo, team } from "@/lib/content";
+import type { ContactSettings } from "@/lib/server/settings";
 
 /**
  * Données structurées schema.org, injectées en JSON-LD.
@@ -12,7 +13,7 @@ import { brand, presse, seo, team } from "@/lib/content";
  * page. Des données structurées qui décrivent un contenu absent exposent
  * à une pénalité.
  */
-export function StructuredData() {
+export function StructuredData({ contact }: { contact: ContactSettings }) {
   const organisation = {
     "@type": "Organization",
     "@id": `${seo.siteUrl}/#organisation`,
@@ -22,8 +23,8 @@ export function StructuredData() {
     logo: `${seo.siteUrl}/icon.png`,
     image: `${seo.siteUrl}/og.png`,
     description: seo.description,
-    email: brand.email,
-    telephone: brand.phone,
+    email: contact.email,
+    telephone: contact.phone,
     foundingDate: "2022",
     address: {
       "@type": "PostalAddress",

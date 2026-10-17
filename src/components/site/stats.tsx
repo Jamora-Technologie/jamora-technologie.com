@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { stats } from "@/lib/content";
+import type { StatSetting } from "@/lib/server/settings";
 import { useCountUp } from "@/components/motion/count-up";
 import { easeOutExpo } from "@/components/motion/reveal";
 
@@ -35,7 +35,7 @@ function StatItem({
   );
 }
 
-export function Stats() {
+export function Stats({ stats }: { stats: StatSetting[] }) {
   return (
     <section className="relative px-4 sm:px-6 lg:px-10">
       <div className="glow-brand-left pointer-events-none absolute inset-0 -z-10" />

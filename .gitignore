@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files : secrets, jamais versionnés. Seul le modèle l'est.
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -43,3 +44,7 @@ next-env.d.ts
 # Rushes vidéo : sources lourdes conservées en local uniquement.
 # Les versions web encodées vivent dans public/movie/.
 /src/assets/movie/*.mov
+
+# Données du back-office (demandes, réglages) : propres à chaque serveur,
+# jamais versionnées, et contiennent des données personnelles.
+/data/

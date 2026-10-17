@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { hero } from "@/lib/content";
+import type { ExperienceSetting } from "@/lib/server/settings";
 import { Burst, Leaf } from "@/components/site/decor";
 import { HeroNetwork } from "@/components/site/hero-network";
 import {
@@ -13,7 +14,7 @@ import {
   staggerParent,
 } from "@/components/motion/reveal";
 
-export function Hero() {
+export function Hero({ experience }: { experience: ExperienceSetting }) {
   return (
     <section id="top" className="relative bg-background pb-20 sm:pb-24">
       <div className="px-3 pt-3 sm:px-4 sm:pt-4">
@@ -57,9 +58,9 @@ export function Hero() {
             </span>
             <span>
               <strong className="font-heading font-semibold text-ink">
-                {hero.experienceValue}
+                {experience.value}
               </strong>{" "}
-              {hero.experienceLabel}
+              {experience.label}
             </span>
           </motion.div>
 

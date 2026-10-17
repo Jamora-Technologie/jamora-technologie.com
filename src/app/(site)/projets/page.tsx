@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   },
 };
 
+/* Filet de sécurité : si le back-office tourne dans un autre processus que
+   le site, sa revalidation à la demande ne l'atteint pas. Le site se
+   régénère alors de lui-même, au plus une fois par minute. */
+export const revalidate = 60;
+
 export default function ProjetsPage() {
   return (
     <main className="flex-1">

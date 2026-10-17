@@ -2,13 +2,6 @@ import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { brand, seo } from "@/lib/content";
-import { Navbar } from "@/components/site/navbar";
-import { MotionProvider } from "@/components/motion/motion-provider";
-import { SmoothScroll } from "@/components/motion/smooth-scroll";
-import { Signature } from "@/components/site/signature";
-import { Footer } from "@/components/site/footer";
-import { ScrollToTop } from "@/components/site/scroll-to-top";
-import { StructuredData } from "@/components/site/structured-data";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -75,6 +68,12 @@ export const metadata: Metadata = {
      verification: { google: "..." }, */
 };
 
+/**
+ * Le layout racine ne porte que ce qui est commun au site ET au back-office :
+ * polices, fond, métadonnées. Le décor du site public (navigation, pied de
+ * page, défilement fluide) vit dans `(site)/layout.tsx`, pour que `/admin`
+ * n'en hérite pas.
+ */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -82,23 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${outfit.variable} ${inter.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
-        {/*
-          Les entrées animées sont rendues à opacity:0 côté serveur et ne
-          réapparaissent que lorsque Framer Motion démarre. Sans JavaScript,
-          la page resterait donc vide : ce filet rétablit la visibilité.
-        */}
-        <noscript>
-          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
-        <StructuredData />
-        <MotionProvider>
-          <SmoothScroll />
-          <Navbar />
-          {children}
-          <Signature />
-          <Footer />
-          <ScrollToTop />
-        </MotionProvider>
+        {children}
       </body>
     </html>
   );

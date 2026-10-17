@@ -14,9 +14,22 @@ const next = require("next");
 const port = Number(process.env.PORT) || 3000;
 const hostname = process.env.HOSTNAME || "0.0.0.0";
 
-/* `dir` est explicite : le répertoire courant de Passenger ne correspond
-   pas toujours à la racine de l'application. */
-const app = next({ dev: false, dir: __dirname });
+/* Le répertoire courant de Passenger ne correspond pas toujours à la racine
+   de l'application. On le fixe ici : le dossier `data/` (demandes, réglages)
+   est résolu depuis `process.cwd()`, et ne doit pas changer d'emplacement. */
+process.chdir(__dirname);
+
+/* `dir` est explicite pour la même raison. `hostname` et `port` indiquent à
+   Next où il tourne : après une action serveur qui redirige (la connexion du
+   back-office, par exemple), il va chercher lui-même la page cible par une
+   requête interne. Sans ces valeurs, elle partait vers un port par défaut
+   et échouait, ce que Next rattrape mais signale dans les journaux. */
+const app = next({
+  dev: false,
+  dir: __dirname,
+  hostname: hostname === "0.0.0.0" ? "localhost" : hostname,
+  port,
+});
 const handle = app.getRequestHandler();
 
 app

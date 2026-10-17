@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { contactPage, seo } from "@/lib/content";
 import { PageHeader } from "@/components/site/page-header";
 import { ContactForm } from "@/components/site/contact-form";
+import { getSiteSettings } from "@/lib/server/settings";
 
 export const metadata: Metadata = {
   /* Le gabarit du layout ajoute « - Jamora Technologie ». */
@@ -15,7 +16,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+/* Filet de sécurité : si le back-office tourne dans un autre processus que
+   le site, sa revalidation à la demande ne l'atteint pas. Le site se
+   régénère alors de lui-même, au plus une fois par minute. */
+export const revalidate = 60;
+
+export default async function ContactPage() {
+  const { contact } = await getSiteSettings();
+  const infos = [
+    { label: contactPage.labels.email, value: contact.email, href: `mailto:${contact.email}` },
+    { label: contactPage.labels.phone, value: contact.phone, href: contact.phoneHref },
+    { label: contactPage.labels.location, value: contact.location, href: null },
+    { label: contactPage.delai.label, value: contactPage.delai.value, href: null },
+  ];
+
   return (
     <main className="flex-1">
       <PageHeader
@@ -30,7 +44,7 @@ export default function ContactPage() {
           <ContactForm />
 
           <aside className="flex flex-col gap-4">
-            {contactPage.infos.map((info) => (
+            {infos.map((info) => (
               <div
                 key={info.label}
                 className="rounded-3xl border border-white/12 bg-white/[0.03] p-7"
